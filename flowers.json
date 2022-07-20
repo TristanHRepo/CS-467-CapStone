@@ -1,0 +1,64 @@
+{
+  "room descriptions": {
+    "intro_text_long": "Your ship lands on a yellow-hued planet. As you exit your ship, you see that the surface of the planet is virtually covered in golden flowers, bobbing gently in the apparent breeze. Each flower has four petals and a round, ruffled shape. The field of flowers nearly reaches your knees. The ground is thickly coated with flowers, but they easily yield to your touch, should you wish to push them aside. \n\nTo the north, you can make out a dull grey patch on the surface. The ground seems patchy, as though the flowers are not so dense there. Towards the east, you can see a blue planet looming close in the sky. Its surface seems to be swirling with mist. ",
+    "intro_text_short": "You land on a planet lush with golden flowers. There is a dull grey patch to the north. There is a blue planet in the near east. "
+  },
+  "items": {
+    "red crystal": {
+      "actions": [
+        "push",
+        "look at",
+        "pick",
+        "take",
+        "place",
+        "use",
+        "drop",
+        "put"
+      ],
+      "description": "A small, round, glittering red crystal. It's warm to the touch.",
+      "locked": "False"
+    },
+    "golden flower": {
+      "actions": [
+        "push",
+        "look under",
+        "pick",
+        "take",
+        "drop",
+        "put",
+        "eat"
+      ],
+      "description": "A golden-hued flower with a round, ruffled shape and four petals.",
+      "locked": "False"
+    }
+  },
+  "environment": {
+    "dull grey patch": {
+      "actions": [
+        "examine",
+        "examine sparkle",
+        "sparkle",
+        "put crystal",
+        "drop crystal",
+        "place crystal",
+        "use crystal",
+        "north",
+        "go north",
+        "dull grey patch",
+        "go dull grey patch"
+      ],
+      "description": "An area where the flowers are sparser. They appear to be wilting and dying, turning grey in color. The temperature is noticeably colder.",
+      "locked": "True"
+    },
+    "blue planet": {
+      "actions": [
+        "east",
+        "go east",
+        "blue planet",
+        "go blue planet"
+      ],
+      "description": "A blue planet covered in swirling mist, seen in the horizon to the east.",
+      "locked": "False"
+    }
+  }
+}
