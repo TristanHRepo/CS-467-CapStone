@@ -1,4 +1,6 @@
 import json
+from nlp import process_input as language_parser
+
 
 class Planet:
 
@@ -60,7 +62,6 @@ class Planet:
 
     def general_description(self, object):
         """Returns the general description for this item."""
-
 
 
         return

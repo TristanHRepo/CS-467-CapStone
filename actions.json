@@ -1,0 +1,140 @@
+{
+  "look at": [
+    "see",
+    "examine",
+    "view",
+    "observe",
+    "watch",
+    "behold",
+    "peek",
+    "inspect"
+  ],
+  "go": [
+    "flee",
+    "move",
+    "pass",
+    "travel",
+    "approach",
+    "walk",
+    "run",
+    "exit",
+    "leave",
+    "travel",
+    "progress"
+  ],
+  "take": [
+    "pick up",
+    "add",
+    "pick",
+    "collect",
+    "grab",
+    "hold",
+    "reach",
+    "seize",
+    "catch",
+    "gather"
+  ],
+  "pull": [
+    "drag",
+    "remove",
+    "tug",
+    "haul",
+    "tow",
+    "lug",
+    "twist",
+    "pry",
+    "yank",
+    "clasp",
+    "clutch",
+    "grip"
+  ],
+  "poke": [
+    "prod",
+    "jab",
+    "nudge",
+    "tap",
+    "dig"
+  ],
+  "talk": [
+    "say",
+    "chat",
+    "communicate",
+    "commune",
+    "converse",
+    "speak",
+    "tell",
+    "chatter",
+    "dialogue"
+  ],
+  "use": [
+    "employ",
+    "make use",
+    "handle",
+    "do",
+    "operate",
+    "utilize",
+    "work"
+  ],
+  "listen": [
+    "hear",
+    "attend",
+    "tune",
+    "eavesdrop",
+    "monitor"
+  ],
+  "turn": [
+    "rotate",
+    "transform",
+    "shift",
+    "twist",
+    "curve",
+    "spin",
+    "revolve",
+    "twirl",
+    "roll",
+    "swivel"
+  ],
+  "eat": [
+    "consume",
+    "devour",
+    "ingest",
+    "taste",
+    "swallow",
+    "chew",
+    "bite",
+    "munch",
+    "snack",
+    "lunch",
+    "dinner"
+  ],
+  "feel": [
+    "touch",
+    "stroke",
+    "caress",
+    "fondle",
+    "handle",
+    "manipulate"
+  ],
+  "open": [
+    "unlock",
+    "unfasten",
+    "undo",
+    "unbar",
+    "access"
+  ],
+  "drop": [
+    "put",
+    "place",
+    "release",
+    "set",
+    "deposit",
+    "lay"
+  ],
+  "help": [],
+  "inventory": [],
+  "look": [],
+  "north": [],
+  "south": [],
+  "east": [],
+  "west": []
+}
