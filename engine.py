@@ -1,20 +1,24 @@
-import Subaqueanus
+import sys
+from Subaqueanus import Subaqueanus
+
 
 class Engine:
     """This is the game engine that checks for user input and move the player to correct planets"""
 
     def __init__(self):
-        """Asks if you want to load a game, then loads game and starts engine"""
+        """Asks if you want to load a game or start new, then loads game and starts engine"""
 
-        planet = None
-        game = None
+        self.planets = ['Subaqueanus', 'Planet2', 'Planet3', 'Planet4', 'Planet5', 'Planet6', 'Planet7', 'Planet8', 'Planet9',
+                        'Planet10', 'Planet11', 'Planet12']
+        self.planet = None
+        self.game = None
 
         flag = self.prompts()
         if flag == 1:
-            game = self.load()
+            self.game = self.load()
             self.engine()
         elif flag == 0:
-            game = self.new_game()
+            self.game = self.new_game()
             self.engine()
         else:
             self.close()
@@ -35,27 +39,40 @@ class Engine:
         return 2
 
     def load(self):
-        """Loads a game for the user by asking for a entry in save file and returning data for that entry"""
+        """Loads a game for the user by asking for an entry in save file and returning data for that entry"""
 
-        with open('saves.txt', 'r') as file:
+        print("Loading:\n-------------------------------------------\n")
 
-            saves = file.readlines()
+        saved_game = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-        print("Current Saves: ")
-        for save in saves:
-            print(save)
+        with open('Savedata.txt', 'r') as file:
 
-        print("\nWhich save should be used?")
-        selection = input(">>")
+            save = file.readlines()
+            for planet in save:
 
-        print("Loading: " + selection + "\n-------------------------------------------\n")
+                array = planet.rsplit('=')
 
-        return
+                position = self.planets.index(array[0])
+
+                array[1] = array[1].replace('\n', '')
+                array[1] = int(array[1])
+
+                if array[1] == 1:
+                    saved_game[position] = 1
+
+        file.close()
+
+        for index in range(len(saved_game)):
+            if not saved_game[index]:
+                self.planet = self.get_planet(self.planets[index])
+                break
+
+        return saved_game
 
     def new_game(self):
         """Creates a new game for the user"""
 
-        return
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     def close(self):
         """Closes game"""
@@ -67,33 +84,50 @@ class Engine:
     def save_game(self):
         """Saves the game"""
 
-        planet = self.get_planet()
+        with open("Savedata.txt", 'w') as file:
+
+            for index in range(len(self.planets)):
+                if self.game[index] == 1:
+                    file.write(self.planets[index] + "=1\n")
+                else:
+                    file.write(self.planets[index] + "=0\n")
+
+        file.close()
 
         return
 
-    def get_planet(self):
-        """Gets which planet the player is currently on"""
+    def get_planet(self, request):
+        """Initiates the requested planet's class based on planet name passed in"""
 
+        planet = getattr(sys.modules[__name__], request)
 
+        planet = planet()
 
-        return
+        return planet
 
     def engine(self):
         """Game play loop for the game"""
 
-        # planet = self.get_planet()
-
-        planet = Subaqueanus.Subaqueanus()
-
         while True:
 
             action = input(">>")
+
             if action == 'quit':
                 break
-            planet.action(action)
+
+            if action == 'savegame':
+                self.save_game()
+
+            if action == 'loadgame':
+                load_game = input("Would you like to load a game? (Y/N)\n>>")
+                if load_game == 'y' or load_game == 'Y':
+                    self.load()
+
+            self.planet.action(action)
 
         self.close()
         return
 
-game = Engine()
 
+if __name__ == "__main__":
+    game = Engine()
