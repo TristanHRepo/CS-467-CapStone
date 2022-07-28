@@ -1,0 +1,45 @@
+{
+  "room descriptions": {
+    "intro_text_long": "You step out of the gate. Your senses are immediately dampened as you enter darkness. The environment here feels viscous. Could it be?\nYou turn the head lamp of your suit on and see a bubble floating straight up. You are under water.\nYou observe your surroundings and see you are completely submerged in a large body of water. The gate behind you faintly glowing. Under your feet is a sandy floor. No signs of life yet, but the environment leaves you feeling vulnerable. \nYou establish North on this planet using your onboard compass system. To the North you see an opening in the world. A dark abyss. It seems to be some type of cave. To the South, you see the faintly glowing gate.",
+    "intro_text_short": "You step into a dark environment on a sandy floor. You are completely submerged in water.\nTo the North you see a dark cave. To the South is the faint gate."
+  },
+  "items": {
+    "item1": {
+      "actions": [
+        "action1",
+        "action2",
+        "action3"
+      ],
+      "description": "string about what this thing is",
+      "locked": true
+    },
+    "item2": {
+      "actions": [
+        "action1"
+      ],
+      "description": "string about what this thing is",
+      "locked": false
+    }
+  },
+  "environment": {
+    "cave": {
+      "actions": [
+        "examine",
+        "enter",
+        "move"
+      ],
+      "description": "A dark cave. The opening must be at least 15ft in diameter. Maybe something of interest lies within?",
+      "locked": false
+    },
+    "mucus": {
+      "actions": [
+        "examine",
+        "touch",
+        "follow"
+      ],
+      "description": "string about what this thing is",
+      "locked": true
+    }
+  },
+  "visited": false
+}

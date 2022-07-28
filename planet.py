@@ -8,20 +8,20 @@ class Planet:
 
     def print_welcome(self):
         if self.planet_data['visited'] == False:
-            print(self.planet_data['intro_text_long'])
+            print(self.planet_data['room descriptions']['intro_text_long'])
         else:
-            print(self.planet_data['intro_text_short'])
+            print(self.planet_data['room descriptions']['intro_text_short'])
 
     def get_planet_data(self, planet):
         """Retrieves the items from the room that can be observed from the passed in file JSON."""
 
         # open and load json file with all of our data
-        with open('data.json', 'r') as file:
+        with open(planet + '.json', 'r') as file:
 
             game_data = json.load(file)
 
             # retrieve the called for planets specific data
-            planet_data = game_data[planet]
+            planet_data = game_data
 
         return planet_data
 
@@ -56,7 +56,7 @@ class Planet:
                 object[0] not in self.planet_data["environment"][object[1]]["actions"]:
             return False
 
-        return True
+        return object
 
     def general_description(self, object):
         """Returns the general description for this item."""
