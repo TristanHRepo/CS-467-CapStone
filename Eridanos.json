@@ -20,16 +20,7 @@
           "strike",
           "insert"
         ],
-        "description": "THis is some sort of handheld pickaxe, made out of some sort of metal you absolutely do not reconize. But you're totally keeping it. This planet is weird.",
-        "locked": "False"
-      },
-      "solid sulhur": {
-        "actions": [
-          "pick up",
-          "grab",
-          "take"
-        ],
-        "description": "Looks like it's some solid sulphur. Might explain the smell of sulphur everywhere, and point to the river not being water... But not what you're looking for still.",
+        "description": "This is some sort of handheld pickaxe, made out of some sort of metal you absolutely do not reconize. But you're totally keeping it. This planet is weird.",
         "locked": "False"
       }
     },
@@ -49,51 +40,18 @@
           "walk",
           "hike"
         ],
-        "description": "At the bottom of the ravine you see a path follow that appears to be a moderately sulphiric river, if the smell is anything to go by. You could see several caveson the left had side of the river from the plateau, but the course of the river makes it hard to see them from here.",
+        "description": "At the bottom of the ravine you see a path follow that appears to be a moderately sulphiric river, if the smell is anything to go by. You could see several caveson the left had side of the river from the plateau, but the course of the river makes it hard to see them from here. This spot is also the closest the river gets to the path. Might want to investigate.",
         "locked": "True"
       },
-      "collapsed cave": {
+      "sulphur river": {
         "actions": [
-          "dig",
-          "shuffle",
-          "kick"
+          "reach",
+          "grab"
         ],
-        "description": "You've reached a moderately shallow cave with an obvious collapse in the back. While there are some loose rocks near the main collapse, it's clear to you that there is no way to get past the actual cave collapse itself.",
+        "description": "While the river my stink of sulphur, it doesn't appear that it will damage your clothing or your skin. Too much, at least. Plus there could always be something in there, though it's too murky to just see.",
         "locked": "True"
       },
       "river path2": {
-        "actions": [
-          "follow",
-          "walk",
-          "hike"
-        ],
-        "description": "The path continues on, still following the left side of the river.",
-        "locked": "True"
-      },
-      "shallow cave": {
-        "actions": [
-          "move"
-        ],
-        "description": "THe particular cave yu've come across here is very shallow, even more shallow than the collapsed one. You see some stalgmites and some fallen stalagtites, but that's about it.",
-        "locked": "True"
-      },
-      "river path3": {
-        "actions": [
-          "follow",
-          "walk",
-          "hike"
-        ],
-        "description": "The path continues on more.",
-        "locked": "True"
-      },
-      "interesting cave": {
-        "actions": [
-          "look"
-        ],
-        "description": "This cave you've reached is much different than the previous. You can see that it goes much farther back than the previous two, but the cave itself doesn't seem natural. It feels more like something carved it out by crawling into the ravine itself...",
-        "locked": "True"
-      },
-      "river path4": {
         "actions": [
           "follow",
           "walk",
@@ -110,28 +68,12 @@
         "description": "You've finally made it to the mysterious mound or structure. You see yet another cave that, to you, comes across as more organically created than geologically. Still creepy.",
         "locked": "True"
       },
-      "termite main cave": {
-        "actions": [
-          "enter",
-          "walk"
-        ],
-        "description": "Inside the creepily organic cave (man this planet has a lot of caves), you see THREE MORE CAVES (I told you so). Like that old Lord of the Rings movie, they branch off to the left, right, and center of you. The one on the left seems to go back forever, shrouded in darkness. The middle one looks jagged, full of stalagtites and stalacmites, while the one on the right is jagged, barely moving in a straight line as far as you can tell.",
-        "locked": "True"
-      },
       "termite left cave": {
         "actions": [
           "action1",
           "action2"
         ],
         "description": "You've made it to the back of the dark cave, despite your expectations. The odd thing is that it simply... stops. The cave itself felt like a natural occurrence, but the back is like a flat wall, save for one small opening.",
-        "locked": "True"
-      },
-      "termite center cave": {
-        "actions": [
-          "action1",
-          "action2"
-        ],
-        "description": "This cave you can barely get too far into before the obstacles stop you. Still, you get the sense there's something worth checking out in it.",
         "locked": "True"
       },
       "termite right cave": {
@@ -141,14 +83,6 @@
         ],
         "description": "The jagged cave went back a ways, but eventually became too narrow to continue farther.",
         "locked": "True"
-      },
-      "sulphur river": {
-        "actions": [
-          "reach",
-          "grab"
-        ],
-        "description": "While the river my stink of sulphur, it doesn't appear that it will damage your clothing or your skin. Too much, at least. Plus there could always be something in there, though it's too murky to just see.",
-        "locked": "True"
-      }
+      }      
     }
   }
