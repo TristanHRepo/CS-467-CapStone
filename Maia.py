@@ -30,10 +30,11 @@ class Maia(planet.Planet):
             "man": self.man,
             "cylinder": self.cylinder,
             "die": self.die,
-            "Hermes": self.Hermes,
+            "hermes": self.hermes,
             "tablet": self.tablet,
             "chest": self.chest,
-            "wall": self.wall
+            "wall": self.wall,
+            "button": self.wall
         }
         self.rooms = [0, 1, 2, 3, 4, 5]
         self.placement = 0
@@ -136,13 +137,24 @@ class Maia(planet.Planet):
 
 
     def cylinder(self, action):
+        """Interaction with cylinder"""
+
+        if self.placement != 1:
+            print("Invalid action")
+            return
+        if action.lower() == 'look':
+            print("The cylindrical object with a very pushable button starts vibrating.")
+ 
+        return
+    
+    def button(self, action):
         """Interaction with button"""
 
         if self.placement != 1:
             print("Invalid action")
             return
-        if action.lower() == 'look cylinder':
-            print("The cylindrical object with a very pushable button starts vibrating.")
+        if action.lower() == 'look':
+            print("The button wants to be pushed.")
         if action.lower() == 'push button':
             print("A powerful blue beam emerges from what looks like a lightsaber.")
             print("It appears that this is not a weapon, however, as the beam projects a hologram")
@@ -151,8 +163,8 @@ class Maia(planet.Planet):
             self.placement += 100
         return
 
-    def Hermes(self, action):
-        """responding to Maia with Hermes as an answer"""
+    def hermes(self, action):
+        """responding to Maia with Hermes as an answer...this part needs adjusting"""
 
         if self.placement < 100:
             print("You should not know that yet!")
