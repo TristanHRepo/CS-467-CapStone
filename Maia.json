@@ -1,17 +1,7 @@
 {
   "room descriptions": {
 
-    "intro_text_long": "You feel groggy.  You slowly sit up and look around.  You are in what appears to be an antique spaceship.
-The ground is metallic with a hint of rust, and through a window you can see what looks like
-the star Maia of the Pleiades system.  It reminds you of pictures you saw in an old textbook from
-the James Webb telescope from back in the 21st century.
-There appears to be two pools of crystal-clear water on either side of you
-which seems odd for an antique spaceship floating through this star system.
-A big pool is to your right, and the small pool is to your left.
-There appears to be something on the cave wall, and a man encased in carbonite is between you
-and the window.  The man reminds you of a legendary archaeologist from 20th century cinema.
-You get the sense that someone is playing an elaborate practical joke on you
-by conflating a few different things that do not quite belong together.",
+    "intro_text_long": "You feel groggy.  You slowly sit up and look around.  You are in what appears to be an antique spaceship. The ground is metallic with a hint of rust, and through a window you can see what looks like the star Maia of the Pleiades system.  It reminds you of pictures you saw in an old textbook from the James Webb telescope from back in the 21st century. There appears to be two pools of crystal-clear water on either side of you which seems odd for an antique spaceship floating through this star system. A big pool is to your right, and the small pool is to your left. There appears to be something on the cave wall, and a man encased in carbonite is between you and the window.  The man reminds you of a legendary archaeologist from 20th century cinema. You get the sense that someone is playing an elaborate practical joke on you by conflating a few different things that do not quite belong together.",
 
     "intro_text_short": "You are in an antique spaceship.  You look out a window and see the star Maia of the Pleiades system."
   },
