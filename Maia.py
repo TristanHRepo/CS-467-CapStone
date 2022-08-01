@@ -67,7 +67,7 @@ class Maia(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'examine':
+        if action.lower() == 'look':
             print("The pool has a treasure chest submerged in the water.")
         self.placement += 1
 
@@ -80,7 +80,7 @@ class Maia(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'examine':
+        if action.lower() == 'look':
             print("The chest appears to have a keyhole.  The size of the keyhole appears to match the size of the key.")
             self.placement += 1
 
@@ -97,7 +97,7 @@ class Maia(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'examine':
+        if action.lower() == 'look':
             print("The wall has an indentation.  It is remarkably the same size and shape of the pentagonal tablet.")
             print("There is also a winged foot engraved on the wall of the ship.")
             self.placement += 1
@@ -111,8 +111,10 @@ class Maia(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'examine':
+        if action.lower() == 'look':
             print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button.")
+        elif action.lower() == 'examine':
+            print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button")
         elif action.lower() == 'take':
             print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button")
             self.placement += 1
@@ -151,7 +153,7 @@ class Maia(planet.Planet):
         if self.placement != 1:
             print("Invalid action")
             return
-        if action.lower() == 'examine':
+        if action.lower() == 'look':
             print("The button wants to be pushed.")
         if action.lower() == 'push button':
             print("A powerful blue beam emerges from what looks like a lightsaber.")
@@ -184,6 +186,15 @@ class Maia(planet.Planet):
             print("SUCCESS!  You rolled a ", dice)
             print("A portal appears...beckoning...")
         return
+
+
+
+
+
+
+
+
+
 
 
 
