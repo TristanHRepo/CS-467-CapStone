@@ -57,7 +57,7 @@ class Celaeno(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("It is a Delorean.  It ironically has a flux capacitor and a fusion generator,")
             print("and a copy of Grays Sports Almanac in the front seat.")
         if action.lower() == 'drive':
@@ -78,7 +78,7 @@ class Celaeno(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The well is deep.  You can see a handful of coins at the bottom.")
             self.placement += 1
 
@@ -91,7 +91,7 @@ class Celaeno(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The coin has an image of Atlas on it. You vaguely remember that Atlas was the father of Celaeno.")
             self.placement += 1
 
@@ -117,7 +117,7 @@ class Celaeno(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("It is a brick door.  All in all, it is just another brick door in the wall.")
         elif action.lower() == 'open':
             print("After you open the brick door that is surrounded by the brick wall, you see a brick road.")
@@ -136,7 +136,7 @@ class Celaeno(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("It is a beautiful sapphire.  You get the sense that it has magical powers,")
             print("but given how crazy today has been, it could be JUST ABOUT ANYTHING.  Take it!")
         elif action.lower() == 'take':
