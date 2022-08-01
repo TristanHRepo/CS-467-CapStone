@@ -57,10 +57,3 @@ class Planet:
             return False
 
         return object
-
-    def general_description(self, object):
-        """Returns the general description for this item."""
-
-
-
-        return
