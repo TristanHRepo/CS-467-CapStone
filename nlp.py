@@ -62,14 +62,6 @@ def process_input(command: str) -> tuple:
     if not action:
         action = find_synonyms(new_comms[0])  # If we still find nothing, check just first word
 
-    # Check for locations/directions #
-    # Create a dictionary of room_id: array of location names (or read from JSON)
-    # If no verb is in the user command, check the command against possible locations
-    # locations = []  # TODO Extract room locations - or just include these as room actions
-    # if new_comms[0] == "go":
-    #     if command in locations:
-    #         action = command
-
     # Return the action and object being interacted with
     return action, item
 
@@ -89,7 +81,3 @@ def find_synonyms(word: str) -> str or None:
             return key
 
     return None
-
-
-# print(process_input("release of key"))
-# print(process_input("put down the key"))

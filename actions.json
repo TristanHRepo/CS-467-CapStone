@@ -1,7 +1,7 @@
 {
-  "look at": [
+  "examine": [
     "see",
-    "examine",
+    "look at",
     "view",
     "observe",
     "watch",
@@ -9,9 +9,9 @@
     "peek",
     "inspect"
   ],
-  "go": [
+  "move": [
     "flee",
-    "move",
+    "go",
     "pass",
     "travel",
     "approach",
@@ -94,11 +94,11 @@
     "roll",
     "swivel"
   ],
-  "eat": [
+  "taste": [
     "consume",
     "devour",
     "ingest",
-    "taste",
+    "eat",
     "swallow",
     "chew",
     "bite",
@@ -107,8 +107,8 @@
     "lunch",
     "dinner"
   ],
-  "feel": [
-    "touch",
+  "touch": [
+    "feel",
     "stroke",
     "caress",
     "fondle",
@@ -130,11 +130,53 @@
     "deposit",
     "lay"
   ],
+  "enter": [
+    "go into",
+    "walk into"
+  ],
+  "follow": [
+    "go after",
+    "chase"
+  ],
+  "answer": [
+    "respond",
+    "reply",
+    "response"
+  ],
+  "throw": [
+    "punt",
+    "launch",
+    "hurl",
+    "toss",
+    "fling",
+    "lob",
+    "propel",
+    "cast"
+  ],
+  "explore": [
+    "survey",
+    "investigate"
+  ],
+  "return": [
+    "go back",
+    "start over",
+    "home"
+  ],
+  "cross": [
+
+  ],
+  "interact": [],
+  "hermes": [],
+  "rock": [],
+  "paper": [],
+  "scissors": [],
   "help": [],
   "inventory": [],
   "look": [],
   "north": [],
   "south": [],
   "east": [],
-  "west": []
+  "west": [],
+  "left": [],
+  "right": []
 }
