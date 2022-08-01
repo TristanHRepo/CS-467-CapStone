@@ -34,7 +34,12 @@ class Subaqueanus(planet.Planet):
 
         self.data[object[1]](object[0])
 
-        return
+
+        # Final Action:
+        return True
+
+        # DEFAULT:
+        # return False
 
     def cave(self, action):
         """Interaction with cave"""
@@ -44,11 +49,22 @@ class Subaqueanus(planet.Planet):
             return
 
         if action.lower() == 'move':
-            print("You move closer to the cave. At it's entrance you notice that the cave is dimly illuminated by an interesting fungus with small tenticles, which at the tip of each tentacle is a small bulb which gives off faint white light.\nFurther in the cave you notice something much larger giving off a red hue.")
+            print("You move closer to the cave. At it's entrance you notice that the cave is dimly illuminated by an "
+                  "interesting fungus with small tenticles, which at the tip of each tentacle is a small bulb which "
+                  "gives off faint white light.\nFurther in the cave you notice something much larger giving off a red "
+                  "hue.")
         elif action.lower() == 'examine':
-            print("A dark cave. The opening must be at least 15ft in diameter. Maybe something of interest lies within?")
+            print("A dark cave. The opening must be at least 15ft in diameter. Maybe something of "
+                  "interest lies within?")
         elif action.lower() == 'enter':
-            print("You enter the cave. Your suit's light giving off a narrow cone of light ahead of you, you begin to descend. \nAs you begin to ascend, you notice the tenticles move toward you, as if they are trying to touch you.\nThe red hue begins to increase in size. You approach carefully, not wanting to disturb whatever lies ahead. Finally, you begin to see a figure\nThe red hue is an object, perfectly spherical and the size of bowling ball. It is housed in a large... Oyster, approzimately the size of a Dumptruck. This would be fantastic for your journal.\nSoon after you begin to make an entry, a large creature grabs the oyster and pulls it deeper into the cave.\nIt leaves behind a glowing mucus... What was that?")
+            print("You enter the cave. Your suit's light giving off a narrow cone of light ahead of you, you begin to "
+                  "descend. \nAs you begin to ascend, you notice the tenticles move toward you, as if they are trying "
+                  "to touch you.\nThe red hue begins to increase in size. You approach carefully, not wanting to disturb "
+                  "whatever lies ahead. Finally, you begin to see a figure\nThe red hue is an object, perfectly spherical "
+                  "and the size of bowling ball. It is housed in a large... Oyster, approximately the size of a Dumptruck. "
+                  "This would be fantastic for your journal.\nSoon after you begin to make an entry, a large creature "
+                  "grabs the oyster and pulls it deeper into the cave.\nIt leaves behind a glowing mucus... What was "
+                  "that?")
             self.placement += 1
 
         return
@@ -61,13 +77,15 @@ class Subaqueanus(planet.Planet):
             return
 
         if action.lower() == 'examine':
-            print("Interesting substance. It appears to be harmless. It seems to give off a some light. This could be easily followed...\nPerhaps this is a trap. Or this creature really can't control what it excretes.")
+            print("Interesting substance. It appears to be harmless. It seems to give off a some light. This could be "
+                  "easily followed...\nPerhaps this is a trap. Or this creature really can't control what it excretes.")
         elif action.lower() == 'touch':
             print("Quiet slimy. Does not seem sticky, as it seems more like an algae. Maybe it tastes like lettuce?")
         elif action.lower() == 'follow':
             print("You travel deeper into the cave, following the mucus...")
         elif action.lower() == 'taste':
-            print("You pull the slimy, algae like trail goo toward yourself. Why are you doing this? As it pulls closer and you open your mouth.\nTHUNK\nOh yeah, your wearing a helmet... There was no way you were actually going to try that... Right?")
+            print("You pull the slimy, algae like trail goo toward yourself. Why are you doing this? As it pulls closer "
+                  "and you open your mouth.\nTHUNK\nOh yeah, your wearing a helmet... There was no way you were actually "
+                  "going to try that... Right?")
 
         return
-
