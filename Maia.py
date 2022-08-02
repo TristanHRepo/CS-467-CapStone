@@ -17,6 +17,7 @@ print('and the window.  The man reminds you of a legendary archaeologist from 20
 print('You get the sense that someone is playing an elaborate practical joke on you')
 print('by conflating a few different things that do not quite belong together.')
 
+
 class Maia(planet.Planet):
     """The Maia planet"""
 
@@ -135,7 +136,6 @@ class Maia(planet.Planet):
 
         return
 
-
     def cylinder(self, action):
         """Interaction with cylinder"""
 
@@ -144,9 +144,9 @@ class Maia(planet.Planet):
             return
         if action.lower() == 'look':
             print("The cylindrical object with a very pushable button starts vibrating.")
- 
+        
         return
-    
+        
     def button(self, action):
         """Interaction with button"""
 
@@ -186,6 +186,24 @@ class Maia(planet.Planet):
             print("SUCCESS!  You rolled a ", dice)
             print("A portal appears...beckoning...")
         return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
