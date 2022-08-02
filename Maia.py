@@ -144,9 +144,9 @@ class Maia(planet.Planet):
             return
         if action.lower() == 'look':
             print("The cylindrical object with a very pushable button starts vibrating.")
-
+        
         return
-
+        
     def button(self, action):
         """Interaction with button"""
 
