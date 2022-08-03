@@ -60,7 +60,7 @@
       ],
       "description": "submerged chest",
       "locked": "True"
-    },
+    }
 
   },
   "environment": {
@@ -75,7 +75,7 @@
     },
     "pool": {
       "actions": [
-        "look",
+        "look"
       ],
       "description": "string about what this thing is",
       "locked": "True"
@@ -87,6 +87,6 @@
       ],
       "description": "string about what this thing is",
       "locked": "True"
-    },
+    }
   }
 }

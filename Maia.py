@@ -186,30 +186,3 @@ class Maia(planet.Planet):
             print("SUCCESS!  You rolled a ", dice)
             print("A portal appears...beckoning...")
         return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

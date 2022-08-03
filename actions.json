@@ -165,6 +165,17 @@
   "cross": [
 
   ],
+  "repair": [
+    "fix",
+    "mend",
+    "restore"
+  ],
+  "break": [
+    "separate",
+    "split",
+    "bust",
+    "divide"
+  ],
   "interact": [],
   "hermes": [],
   "rock": [],

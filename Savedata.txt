@@ -1,0 +1,11 @@
+Subaqueanus=0
+Maia=0
+Alcyone=0
+Celaeno=0
+Byss=0
+Eridanos=0
+Monarch=0
+Planet8=0
+Planet9=0
+Planet10=0
+Planet11=0

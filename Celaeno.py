@@ -105,7 +105,7 @@ class Celaeno(planet.Planet):
             ans5 = input(">>")
             print("You are correct!  It absolutely would be 130 parsecs.")
             print("Atlas disappears.  A brick wall appears.  The brick wall has a brick door.")
-            print("You also see a large, random sapphire on the ground.  This is odd, because the sapphire seems"
+            print("You also see a large, random sapphire on the ground.  This is odd, because the sapphire seems")
             print("to have no relevance here.  Yet, you also feel like YOU MUST TAKE IT.")
 
         return

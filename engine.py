@@ -1,5 +1,7 @@
 import sys
 from Subaqueanus import Subaqueanus
+from Maia import Maia
+from Alcyone import Alcyone
 
 
 class Engine:
@@ -8,8 +10,8 @@ class Engine:
     def __init__(self):
         """Asks if you want to load a game or start new, then loads game and starts engine"""
 
-        self.planets = ['Subaqueanus', 'Planet2', 'Planet3', 'Planet4', 'Planet5', 'Planet6', 'Planet7', 'Planet8',
-                        'Planet9', 'Planet10', 'Planet11', 'Planet12']
+        self.planets = ['Subaqueanus', 'Maia', 'Alcyone', 'Celaeno', 'Byss', 'Eridanos', 'Monarch', 'Planet8', 'Planet9',
+                        'Planet10', 'Planet11']
         self.planet = None
         self.game = None
 
@@ -46,7 +48,7 @@ class Engine:
 
         print("Loading:\n-------------------------------------------\n")
 
-        saved_game = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        saved_game = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
         try:
             with open('Savedata.txt', 'r') as file:
@@ -86,7 +88,7 @@ class Engine:
 
         file.close()
 
-        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     def close(self):
         """Closes game"""
