@@ -1,16 +1,6 @@
 import planet
+import nlp
 
-
-print('You look around.  You feel like you are 430 light years from Earth.')
-print('You see the star of Celaeno off to the left.')
-print('There is quite the dichotomy around you:  gurgling lava to your right,')
-print('and a bubbling swamp to your left.  You get the sense that the swamp is alive, or at least')
-print('the home to VERY MANY living things of suspicious origin.')
-print('the lava (well, you THINK it is lava) shimmers between normal lava colors, as well as an odd')
-print('shade of cyan.  That is strange...color-shifting lava.')
-print('There is a very wide marble path that bifurcates the two different environments, and there appears to ')
-print('be a DeLorean directly in front of you.  The car seems strangely out of place in this world, but it')
-print('beckons to you.  You have never seen a Celaeno DeLorean before...')
 
 class Celaeno(planet.Planet):
     """The Celaeno planet"""
@@ -19,7 +9,7 @@ class Celaeno(planet.Planet):
         """Call inheritance from parent class"""
 
         super().__init__("Celaeno")
-        self.print_welcome()
+        self.enter_planet()
         self.data = {
             "car": self.car,
             "well": self.well,
@@ -50,6 +40,20 @@ class Celaeno(planet.Planet):
 
         return
 
+    def enter_planet(self):
+        print('You look around.  You feel like you are 430 light years from Earth.')
+        print('You see the star of Celaeno off to the left.')
+        print('There is quite the dichotomy around you:  gurgling lava to your right,')
+        print('and a bubbling swamp to your left.  You get the sense that the swamp is alive, or at least')
+        print('the home to VERY MANY living things of suspicious origin.')
+        print('the lava (well, you THINK it is lava) shimmers between normal lava colors, as well as an odd')
+        print('shade of cyan.  That is strange...color-shifting lava.')
+        print('There is a very wide marble path that bifurcates the two different environments, and there appears to ')
+        print('be a DeLorean directly in front of you.  The car seems strangely out of place in this world, but it')
+        print('beckons to you.  You have never seen a Celaeno DeLorean before...')
+        
+        return
+    
     def car(self, action):
         """Interaction with car"""
 
