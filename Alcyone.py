@@ -1,16 +1,5 @@
 import planet
-
-
-print('You look around.  You get the sense that gravity does not exist, but you know that it must.')
-print('You are surrounded by a light violet mist, and apparently are suspended in a giant bubble.')
-print('The bubble material is transparent, and in the distance you see the star Alcyone of the Pleiades system.')
-print('It seems strange to just KNOW that, but it is as if something else is *involved* with your thoughts.')
-print('It feels like you are hooked up to some wireless version of a virtual reality machine, and images')
-print('are being beamed into your head.  You get the sense that you can *will* yourself in any direction.')
-print('You scan the inner surface of your bubble, and their appears to be large seals to your left and right.')
-
-print('What is your name?')
-player = input(">>")
+import nlp
 
 
 class Alcyone(planet.Planet):
@@ -20,7 +9,7 @@ class Alcyone(planet.Planet):
         """Call inheritance from parent class"""
 
         super().__init__("Alcyone")
-        self.print_welcome()
+        self.enter_planet()
         self.data = {
             "trident": self.trident,
             "seal": self.seal,
@@ -55,6 +44,16 @@ class Alcyone(planet.Planet):
 
         return
 
+    def enter_planet(self):
+        print('You look around.  You get the sense that gravity does not exist, but you know that it must.')
+        print('You are surrounded by a light violet mist, and apparently are suspended in a giant bubble.')
+        print('The bubble material is transparent, and in the distance you see the star Alcyone of the Pleiades system.')
+        print('It seems strange to just KNOW that, but it is as if something else is *involved* with your thoughts.')
+        print('It feels like you are hooked up to some wireless version of a virtual reality machine, and images')
+        print('are being beamed into your head.  You get the sense that you can *will* yourself in any direction.')
+        print('You scan the inner surface of your bubble, and their appears to be large seals to your left and right.')
+
+    
     def bubble(self, action):
         """Interaction with bubble"""
 
@@ -76,7 +75,7 @@ class Alcyone(planet.Planet):
             return
 
         if action.lower() == 'look':
-            print(player + '!  There is some writing on the seal.  It references Mount Cyllene.')
+            print('There is some writing on the seal.  It references Mount Cyllene.')
             print('There is a small trident floating near the seal.')
             self.placement += 1
         return
@@ -120,7 +119,7 @@ class Alcyone(planet.Planet):
             print('Before we consider that choice, your trident is vibrating.  Again.')
             print('It appears that this is not a weapon, however, as it suddenly projects a hologram')
             print('of a younger, more charming version of Poseidon.')
-            print('Poseidon speaks.  Help me,' + player + '!  I must retain my past glory!')
+            print('Poseidon speaks.  Help me!  I must retain my past glory!')
 
             print('What is the name of my true love?')
             ans9 = input(">>")
