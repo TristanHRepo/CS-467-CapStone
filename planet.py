@@ -27,6 +27,7 @@ class Planet:
 
             return planet_data
 
+        # If not file found, set planet data to None
         except FileNotFoundError:
             return None
 

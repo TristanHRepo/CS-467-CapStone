@@ -8,7 +8,7 @@ class Subaqueanus(planet.Planet):
         """Call inheritance from parent class"""
 
         super().__init__("Subaqueanus")
-        self.print_welcome()
+        self.enter_planet()
         self.data = {
             "cave": self.cave,
             "mucus": self.mucus,
@@ -312,6 +312,6 @@ class Subaqueanus(planet.Planet):
               "No signs of life yet, but the environment leaves you feeling vulnerable.\n"
               "You establish North on this planet using your onboard compass system.\n"
               "To the North you see an opening in the world. A dark abyss. It seems to be some type of cave.\n"
-              "To the South, you see the faintly glowing gate.")
+              "To the South, you see your ship.")
 
         return
