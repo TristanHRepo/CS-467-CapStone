@@ -52,6 +52,8 @@ class Alcyone(planet.Planet):
         print('It feels like you are hooked up to some wireless version of a virtual reality machine, and images')
         print('are being beamed into your head.  You get the sense that you can *will* yourself in any direction.')
         print('You scan the inner surface of your bubble, and their appears to be large seals to your left and right.')
+        
+        return
 
     
     def bubble(self, action):
