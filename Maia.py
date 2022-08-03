@@ -1,21 +1,9 @@
 import planet
-import time
+import nlp
 from random import seed
 from random import randint
 
 seed(1)
-
-print('You feel groggy.  You slowly sit up and look around.  You are in what appears to be an antique spaceship.')
-print('The ground is metallic with a hint of rust, and through a window you can see what looks like')
-print('the star Maia of the Pleiades system.  It reminds you of pictures you saw in an old textbook from')
-print('the James Webb telescope from back in the 21st century.')
-print('There appears to be two pools of crystal-clear water on either side of you')
-print('which seems odd for an antique spaceship floating through this star system.')
-print('A big pool is to your right, and the small pool is to your left.')
-print('There appears to be something on the cave wall, and a man encased in carbonite is between you')
-print('and the window.  The man reminds you of a legendary archaeologist from 20th century cinema.')
-print('You get the sense that someone is playing an elaborate practical joke on you')
-print('by conflating a few different things that do not quite belong together.')
 
 
 class Maia(planet.Planet):
@@ -25,7 +13,7 @@ class Maia(planet.Planet):
         """Call inheritance from parent class"""
 
         super().__init__("Maia")
-        self.print_welcome()
+        self.enter_planet()
         self.data = {
             "pool": self.pool,
             "man": self.man,
@@ -60,6 +48,20 @@ class Maia(planet.Planet):
 
         return
 
+    def enter_planet(self):
+        print('You feel groggy.  You slowly sit up and look around.  You are in what appears to be an antique spaceship.')
+        print('The ground is metallic with a hint of rust, and through a window you can see what looks like')
+        print('the star Maia of the Pleiades system.  It reminds you of pictures you saw in an old textbook from')
+        print('the James Webb telescope from back in the 21st century.')
+        print('There appears to be two pools of crystal-clear water on either side of you')
+        print('which seems odd for an antique spaceship floating through this star system.')
+        print('A big pool is to your right, and the small pool is to your left.')
+        print('There appears to be something on the cave wall, and a man encased in carbonite is between you')
+        print('and the window.  The man reminds you of a legendary archaeologist from 20th century cinema.')
+        print('You get the sense that someone is playing an elaborate practical joke on you')
+        print('by conflating a few different things that do not quite belong together.')
+    
+    
     def pool(self, action):
         """Interaction with pool"""
 
