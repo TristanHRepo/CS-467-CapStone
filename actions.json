@@ -162,9 +162,7 @@
     "start over",
     "home"
   ],
-  "cross": [
-
-  ],
+  "cross": [],
   "repair": [
     "fix",
     "mend",
@@ -176,6 +174,10 @@
     "bust",
     "divide"
   ],
+  "push": [
+    "press"
+  ],
+  "scan": [],
   "interact": [],
   "hermes": [],
   "rock": [],

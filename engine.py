@@ -1,7 +1,10 @@
 import sys
+import json
 from Subaqueanus import Subaqueanus
 from Maia import Maia
 from Alcyone import Alcyone
+from crystals import Atlas
+from final import Asterope
 
 
 class Engine:
@@ -10,8 +13,8 @@ class Engine:
     def __init__(self):
         """Asks if you want to load a game or start new, then loads game and starts engine"""
 
-        self.planets = ['Subaqueanus', 'Maia', 'Alcyone', 'Celaeno', 'Byss', 'Eridanos', 'Monarch', 'Planet8', 'Planet9',
-                        'Planet10', 'Planet11']
+        self.planets = ['Subaqueanus', 'Maia', 'Alcyone', 'Celaeno', 'Byss', 'Eridanos', 'Monarch', 'Atlas', 'Pleione',
+                        'Planet10', 'Asterope']
         self.planet = None
         self.game = None
 
@@ -88,6 +91,13 @@ class Engine:
 
         file.close()
 
+        # Create new inventory: load in base & write it to inventory file to edit
+        with open("base_inventory.json") as file1:
+            base = json.load(file1)
+
+        with open("inventory.json", "w") as file2:
+            json.dump(base, file2, indent=4)
+
         return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     def close(self):
@@ -157,7 +167,11 @@ class Engine:
                     self.load()
                     continue
 
-            room_status = self.planet.action(action)
+            try:
+                room_status = self.planet.action(action)
+            except:
+                room_status = False
+                print("Invalid input")
 
             if room_status is True:
                 self.change_planet()
