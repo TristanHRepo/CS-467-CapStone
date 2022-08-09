@@ -217,6 +217,7 @@ class Asterone(planet.Planet):
                   'Monarch \n\n'
                   'Atlas \n\n'
                   'Pleione \n\n'
+                  'Desertum \n\n'
                   'Asterope: You Are Here\n\n')
             print('At the end of it all, the display reads simply, "Transmission received!"')
 

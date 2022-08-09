@@ -1,10 +1,11 @@
 import sys
 import json
 from Subaqueanus import Subaqueanus
+from Desertum import Desertum
 from Maia import Maia
 from Alcyone import Alcyone
 from crystals import Atlas
-from final import Asterope
+from final import Asterone
 
 
 class Engine:
@@ -14,7 +15,7 @@ class Engine:
         """Asks if you want to load a game or start new, then loads game and starts engine"""
 
         self.planets = ['Subaqueanus', 'Maia', 'Alcyone', 'Celaeno', 'Byss', 'Eridanos', 'Monarch', 'Atlas', 'Pleione',
-                        'Planet10', 'Asterope']
+                        'Desertum', 'Asterone']
         self.planet = None
         self.game = None
 
@@ -97,6 +98,8 @@ class Engine:
 
         with open("inventory.json", "w") as file2:
             json.dump(base, file2, indent=4)
+
+        self.planet = self.get_planet(self.planets[0])
 
         return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 

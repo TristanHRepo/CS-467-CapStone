@@ -36,14 +36,17 @@ def process_input(command: str) -> tuple:
     for verb in actions:
         if command == verb:  # If this is an action only
             action = verb
+            break
 
         if verb in command:
             action = verb
+            break
 
     # Extract object if available; check player inventory
     for thing in inventory:
         if thing in command:
             item = thing
+            break
 
     # room_items = get_items(room_id)  # Retrieve objects from a given room
     room_items = []  # Placeholder
@@ -60,7 +63,7 @@ def process_input(command: str) -> tuple:
             action = "examine"
 
     # If no action has been found, check synonyms
-    action = find_synonyms(first_two)
+    # action = find_synonyms(first_two)
     if not action:
         action = find_synonyms(new_comms[0])  # If we still find nothing, check just first word
 

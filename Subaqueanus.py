@@ -59,7 +59,7 @@ class Subaqueanus(planet.Planet):
                   "Hopefully I can repair that soon.")
             self.placement = 0
 
-        if (action.lower() == 'move' or action.lower() == 'south') and self.checkpoints[1] is True:
+        elif (action.lower() == 'move' or action.lower() == 'south') and self.checkpoints[1] is True:
             print("You return to the entrance of the cave.\n"
                   "Somehow you feel more exposed than when you were in the cave as you return to the deep\n"
                   "You move your headlamp in the direction of your ship and notice the creature from in the cave.\n"
@@ -68,6 +68,12 @@ class Subaqueanus(planet.Planet):
                   "A few panels have been damaged, but this looks repairable...\n"
                   "If only you had some tools and ship parts.")
             self.checkpoints[3] = True
+            self.placement = 0
+            return
+
+        elif (action.lower() == 'move' or action.lower() == 'south') and self.checkpoints[0] is True:
+            print("You return to the entrance of the cave.\n" \
+            "Nothing really interesting out here except your ship.")
             self.placement = 0
             return
 
