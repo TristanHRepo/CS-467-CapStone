@@ -59,22 +59,14 @@ class Alcyone(planet.Planet):
     def bubble(self, action):
         """Interaction with bubble"""
 
-        if self.placement != 0:
-            print("Invalid action")
-            return
-
         if action.lower() == 'look':
-            print("The pool has a treasure chest submerged in the water.")
+            print("It is a bubble...nothing interesting here.  Maybe you should LOOK SEAL :)")
         self.placement += 1
 
         return
 
     def seal(self, action):
         """Interaction with seal"""
-
-        if self.placement < 1:
-            print("Invalid action")
-            return
 
         if action.lower() == 'look':
             print('There is some writing on the seal.  It references Mount Cyllene.')
@@ -84,10 +76,6 @@ class Alcyone(planet.Planet):
 
     def trident(self, action):
         """Interaction with trident"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
 
         if action.lower() == 'take':
             print('You now hold the trident')
@@ -108,10 +96,6 @@ class Alcyone(planet.Planet):
 
     def wall(self, action):
         """Interaction with wall"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
 
         if action.lower() == 'look':
             print('The wall has an indentation.  It is remarkably the same size and shape of the pentagonal tablet.')
@@ -141,10 +125,6 @@ class Alcyone(planet.Planet):
     def poseidon(self, action):
         """Interaction with poseidon"""
 
-        if self.placement != 5:
-            print("Invalid action")
-            return
-
         if action.lower() == 'answer':
             print("Poseidon speaks again:  What is the name of my true love?")
             ans8 = input(">>")
@@ -163,10 +143,6 @@ class Alcyone(planet.Planet):
     def rock(self, action):
         """Interaction with rock"""
 
-        if self.placement < 1:
-            print("Invalid action")
-            return
-
         if action.lower() == 'take':
             print('Success!')
             print('You have defeated Poseidon and earned the undying respect of Alcyone!')
@@ -176,10 +152,6 @@ class Alcyone(planet.Planet):
     def paper(self, action):
         """Interaction with paper"""
 
-        if self.placement < 1:
-            print("Invalid action")
-            return
-
         if action.lower() == 'take':
             print('Success!')
             print('You have defeated Poseidon and earned the undying respect of Alcyone!')
@@ -188,10 +160,6 @@ class Alcyone(planet.Planet):
 
     def scissors(self, action):
         """Interaction with scissors"""
-
-        if self.placement < 1:
-            print("Invalid action")
-            return
 
         if action.lower() == 'take':
             print('Success!')
