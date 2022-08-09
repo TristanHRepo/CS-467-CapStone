@@ -23,7 +23,7 @@ class Maia(planet.Planet):
             "tablet": self.tablet,
             "chest": self.chest,
             "wall": self.wall,
-            "button": self.wall
+            "button": self.button
         }
         self.rooms = [0, 1, 2, 3, 4, 5]
         self.placement = 0
@@ -78,7 +78,7 @@ class Maia(planet.Planet):
         return
 
     def chest(self, action):
-        """Interaction with pool"""
+        """Interaction with chest"""
 
         if self.placement < 1:
             print("Invalid action")
@@ -95,11 +95,7 @@ class Maia(planet.Planet):
         return
 
     def wall(self, action):
-        """Interaction with pool"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
+        """Interaction with wall"""
 
         if action.lower() == 'look':
             print("The wall has an indentation.  It is remarkably the same size and shape of the pentagonal tablet.")
@@ -110,10 +106,6 @@ class Maia(planet.Planet):
 
     def man(self, action):
         """Interaction with carbonite man"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
 
         if action.lower() == 'look':
             print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button.")
@@ -128,10 +120,6 @@ class Maia(planet.Planet):
     def tablet(self, action):
         """Interaction with tablet"""
 
-        if self.placement != 0:
-            print("Invalid action")
-            return
-
         if action.lower() == 'take':
             print("You now have the tablet.")
         elif action.lower() == 'examine':
@@ -143,9 +131,6 @@ class Maia(planet.Planet):
     def cylinder(self, action):
         """Interaction with cylinder"""
 
-        if self.placement != 1:
-            print("Invalid action")
-            return
         if action.lower() == 'look':
             print("The cylindrical object with a very pushable button starts vibrating.")
         
@@ -154,16 +139,14 @@ class Maia(planet.Planet):
     def button(self, action):
         """Interaction with button"""
 
-        if self.placement != 1:
-            print("Invalid action")
-            return
         if action.lower() == 'look':
             print("The button wants to be pushed.")
-        if action.lower() == 'push button':
+        if action.lower() == 'push':
             print("A powerful blue beam emerges from what looks like a lightsaber.")
             print("It appears that this is not a weapon, however, as the beam projects a hologram")
             print("of a woman that looks eerily like Princess Leia, but she calls herself Princess Maia of Pleiades.")
             print("Maia speaks.  Help me (player name)-wan Kenobi!  What is the name of my son?")
+            print("Type the word 'say' and then his name...")
             self.placement += 100
         return
 
@@ -173,7 +156,7 @@ class Maia(planet.Planet):
         if self.placement < 100:
             print("You should not know that yet!")
             return
-        if self.placement > 100:
+        if self.placement > 99:
             print("You are correct!  Hermes is the son of Maia!")
             print("The room begins to vibrate.  A very large 20-sided die appears.")
             self.placement += 1000
@@ -185,7 +168,7 @@ class Maia(planet.Planet):
         if self.placement < 1000:
             print("You cannot roll it until it appears!")
             return
-        if self.placement > 1000:
+        if self.placement > 999:
             dice = randint(0, 20)
             print("SUCCESS!  You rolled a ", dice)
             print("A portal appears...beckoning...")
