@@ -1,0 +1,11 @@
+Subaqueanus=0
+Maia=0
+Alcyone=0
+Celaeno=0
+Byss=0
+Eridanos=0
+Monarch=0
+Atlas=0
+Pleione=0
+Desertum=0
+Asterone=0
