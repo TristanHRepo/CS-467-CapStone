@@ -1,6 +1,7 @@
 import sys
 import json
 import inventory
+import nlp
 from Planets.Subaqueanus import Subaqueanus
 from Planets.Desertum import Desertum
 from Planets.Maia import Maia
@@ -163,6 +164,10 @@ class Engine:
         while True:
 
             action = input(">>")
+
+            if action == 'help':
+                nlp.get_actions()
+                continue
 
             if action == 'quit':
                 self.close()

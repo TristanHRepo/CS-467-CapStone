@@ -90,6 +90,30 @@ def find_synonyms(word: str) -> str or None:
     return None
 
 
+def get_actions():
+
+    print("----------------------------------------HELP----------------------------------------\n"
+          "Here is a list of standard actions that you may be able to do in the game\n"
+          "Their ability to be used depends on the situation and may no always yield results\n"
+          "synonyms/similar words of these words may also be used where necessary\n")
+
+    count = 0
+    available = []
+    for action in actions.keys():
+        available.append(action)
+        count += 1
+        if count == 10:
+            print(available)
+            count = 0
+            available = []
+
+    print("\nBASIC USAGE: [Action] [Object]\n"
+          "EXAMPLE: [examine] the weird [doll]\n")
+    print("------------------------------------------------------------------------------------\n")
+
+    return
+
+
 def main() -> None:
     """
     Main function for testing
