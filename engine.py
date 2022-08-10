@@ -6,6 +6,9 @@ from Planets.Desertum import Desertum
 from Planets.Maia import Maia
 from Planets.Alcyone import Alcyone
 from Planets.Celaeno import Celaeno
+from Planets.Byss import Byss
+from Planets.Eridanos import Eridanos
+from Planets.Monarch import Monarch
 from Planets.crystals import Atlas
 from Planets.final import Asterone
 
@@ -164,9 +167,7 @@ class Engine:
                 self.close()
 
             if action == 'inventory':
-
                 print(inventory.get_inv())
-
                 continue
 
             if action == 'savegame':
