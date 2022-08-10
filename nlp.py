@@ -55,6 +55,7 @@ def process_input(command: str) -> tuple:
             item = thing
 
     # Strip action at second space (to account for verb phrases like "look at")
+    first_two = None
     new_comms = command.split(" ")
     if len(new_comms) > 1:
         first_two = new_comms[0] + " " + new_comms[1]
@@ -63,7 +64,8 @@ def process_input(command: str) -> tuple:
             action = "examine"
 
     # If no action has been found, check synonyms
-    # action = find_synonyms(first_two)
+    if first_two:
+        action = find_synonyms(first_two)
     if not action:
         action = find_synonyms(new_comms[0])  # If we still find nothing, check just first word
 
@@ -86,3 +88,18 @@ def find_synonyms(word: str) -> str or None:
             return key
 
     return None
+
+
+def main() -> None:
+    """
+    Main function for testing
+    """
+    user_in = None
+    while user_in != "quit":
+        user_in = input("What will you do?: \n>>")
+        if user_in != "quit":
+            print(" Verb:", process_input(user_in)[0], "\n Object:", process_input(user_in)[1])
+
+
+if __name__ == "__main__":
+    main()

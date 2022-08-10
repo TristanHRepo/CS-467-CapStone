@@ -203,21 +203,45 @@ class Asterone(planet.Planet):
         act = action.lower()
         if act == 'examine':
             print("You look at your log, in which you have been collecting data about every planet you have seen. "
-                  "This book holds a lot of information to send home...")
+                  "This book holds a lot of information to send home...\n"
+                  "You know how valuable this is. The purpose of your mission was to explore and gather as much "
+                  "information as you could, after all! All of your payoff is contained within this log.")
 
         elif act == 'scan' or act == 'use':
             print('You place your log onto the flat scanning surface. The interface reads, "Input accepted. Now '
                   'transmitting to Home..." \n\n'
-                  'Subaqueanus: \n\n'
-                  'Maia \n\n'
-                  'Alcyone \n\n'
-                  'Celaeno \n\n'
-                  'Byss \n\n'
-                  'Eridanos \n\n'
-                  'Monarch \n\n'
-                  'Atlas \n\n'
-                  'Pleione \n\n'
-                  'Desertum \n\n'
+                  'Subaqueanus: The underwater star. Here, we made a treasured friend -- a huge creature who '
+                  'helped us repair our ship, using parts we found in a cave here. \n\n'
+                  'Maia: A star with two pools, one big and one small. We found a man encased in carbonite, '
+                  'and we picked up a lightsaber. We spoke to "Princess Maia of Pleiades."\n\n'
+                  'Alcyone: The star suspended in a mystical bubble. Here we met with Poseidon and had to defeat him'
+                  ' to free ourselves. We spoke of his love, Alcyone. \n\n'
+                  'Celaeno: The color-changing lava swamp star. We encountered what seems to be a Delorean here. '
+                  'We piloted it through time and space to another version of the world, where we picked up a coin'
+                  ' of Atlas and an odd, magical sapphire. \n\n'
+                  'Byss: A star of unending rain. The mass is wracked by storms that never cease. We reached into '
+                  'a well and picked up a lovely geode. \n\n'
+                  'Eridanos: A sulphurous star, lush with strange life. We reached into a rushing river and came '
+                  'away with a pickaxe. We placed it in a termite hole and out popped a fossilized claw of '
+                  'mysterious origin. \n\n'
+                  'Monarch: A star with a lush jungle right along the terminator line. It has trees like we have'
+                  'never seen. The jungle was too thick to traverse, but fortunately we found a tunnel through'
+                  ' the trees. It led us to a hot, dry grove full of bee-like insects. We were able to capture one! '
+                  ' \n\n'
+                  'Atlas: The crystalline star. It is covered in swirling mists, but underneath, the planet is '
+                  'solid crystal, primarily blue but with other colors as well, like the inside of a geode. We found '
+                  'a magical red crystal, attuned with fire magic, that emits heat. We also found a gem-encrusted '
+                  'key. \n\n'
+                  'Pleione: The flowery star. A planet covered in magical golden flowers that glow faintly. We '
+                  'discovered a disturbance in the temperature here, where due to the cold, all of the affected flowers'
+                  ' were wilting and greying. But using our fire crystal from Atlas, we were able to warm them up and '
+                  'bring them back to life. \n\n'
+                  'Desertum: The sandy star. \n\n'
                   'Asterope: You Are Here\n\n')
             print('At the end of it all, the display reads simply, "Transmission received!"')
+            input("Press any key to continue...")
+            print("Congratulations on completing your journey through Pleiades! You were able to make contact "
+                  "with your home planet, sharing the details of your adventure with them.")
+            print("\nWe hope you enjoyed our game. Project: Pleiades was created by Tristan Harville, Gary Lutwen, "
+                  "Sarah Doss, and Christopher Gundlach. \nThank you for playing! ")
 

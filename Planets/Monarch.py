@@ -46,10 +46,14 @@ class Monarch(planet.Planet):
     def enter_planet(self):
 
         if self.visited == False:
-            print('As you made you way to land on Monarch, you noticed it was tidally locked toward its sun, but at the/n terminator line had a lush jungle, so that is where you find yourself now. From up high, the trees were unlike anything you have/n ever seen, but still comfortably familiar at the same time.')
+            print('As you made you way to land on Monarch, you noticed it was tidally locked toward its sun, '
+                  'but at the/n terminator line had a lush jungle, so that is where you find yourself now. From up '
+                  'high, the trees were unlike anything you have/n ever seen, but still comfortably familiar at the '
+                  'same time.')
             self.visited = True
         elif self.visited == True:
-            print("You have returned to the terminator line jungle on Monarch, still full of those fascinating flowers and bees.")
+            print("You have returned to the terminator line jungle on Monarch, still full of those fascinating "
+                  "flowers and bees.")
         return
 
     def clearing(self, action):
@@ -60,9 +64,11 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == 'look':
-            print("You're in awe of the natural beauty around you. However, you realize that that the forest is too think to traverse,/n other than through the tree archway.")
+            print("You're in awe of the natural beauty around you. However, you realize that that the forest is too "
+                  "think to traverse,/n other than through the tree archway.")
         elif action.lower() == 'walk':
-            print("You walk over to the archway itself. It is truly magnificent to behold. You can't see where the archway leads to,/n but the plant life is thin enough you can cross through it.")
+            print("You walk over to the archway itself. It is truly magnificent to behold. You can't see where the "
+                  "archway leads to,/n but the plant life is thin enough you can cross through it.")
             self.placement += 1
 
         return
@@ -75,7 +81,10 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == 'enter':
-            print("You find yourself now walking through a tunnel of trees. The shafts of light coming throgh the upper canopy are beautiful./n Despite only being on a terminal ring, this might be the most beautiful planet you've been to. After a while, you/n come across a fork in the tunnel. One leads north and the other southeast.")
+            print("You find yourself now walking through a tunnel of trees. The shafts of light coming throgh the "
+                  "upper canopy are beautiful./n Despite only being on a terminal ring, this might be the most "
+                  "beautiful planet you've been to. After a while, you/n come across a fork in the tunnel. One leads "
+                  "north and the other southeast.")
             self.placement += 1
         elif action.lower() == 'return':
             print("You head back toward the clearing with your ship.")
@@ -93,7 +102,8 @@ class Monarch(planet.Planet):
             print("You head off in the northern tunnel.")
             self.placement += 1
         elif action.lower() == 'southeast':
-            print("You head off southeast. The air seems to be getting more dry, and the plants a little less healthy and sparse.")
+            print("You head off southeast. The air seems to be getting more dry, and the plants a little less healthy "
+                  "and sparse.")
             self.placement = 4
         elif action.lower() == 'return':
             print("You head back toward the tree archway entry.")
@@ -108,7 +118,9 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == "north":
-            print("You continue north along to path. As you get closer to the end, you start to hear a faint buzzing noise. /n As you you reach the end of the path, you come out into a pleasant jungle grove, filled /n with a number of bee-like insects. You certainly didn't expect this!")
+            print("You continue north along to path. As you get closer to the end, you start to hear a faint buzzing "
+                  "noise. /n As you you reach the end of the path, you come out into a pleasant jungle grove, "
+                  "filled /n with a number of bee-like insects. You certainly didn't expect this!")
         elif action.lower() == 'return':
             print("You head back toward the tunnel split.")
             self.placement -= 1
@@ -122,7 +134,8 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == 'southeast':
-            print("And then you reach the end. Of course. You just had to forget you were on a narrow ring. Before you is the desolate daylight side/n of the planet you should probably head back. Quickly.")
+            print("And then you reach the end. Of course. You just had to forget you were on a narrow ring. Before "
+                  "you is the desolate daylight side/n of the planet you should probably head back. Quickly.")
             self.placement += 1
         elif action.lower() == 'return':
             print("You head back toward the tunnel split.")
@@ -137,10 +150,12 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == 'return':
-            print("You immediately head back toward the split in the tunnel. You do not want to stick around here for very long.")
+            print("You immediately head back toward the split in the tunnel. You do not want to stick around here for "
+                  "very long.")
             self.placement -= 1
         elif action.lower() == 'examine':
-            print("This is not an area you want to be in for long. It is hot, desolate, and that sun in going nowhere. Time to head back.")
+            print("This is not an area you want to be in for long. It is hot, desolate, and that sun in going "
+                  "nowhere. Time to head back.")
         
 
         return
@@ -153,7 +168,9 @@ class Monarch(planet.Planet):
             return
 
         if action.lower() == 'catch':
-            print("You've managed to gently grab the bee-like insect, though that sting in your hand in unpleasant./n And you're actually feeling better now, rather than worse. A rather unexpected outcome. This is worth keeping.")
+            print("You've managed to gently grab the bee-like insect, though that sting in your hand in unpleasant./n "
+                  "And you're actually feeling better now, rather than worse. A rather unexpected outcome. This is "
+                  "worth keeping.")
             self.accomplished = True        
 
         return

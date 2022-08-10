@@ -9,6 +9,7 @@ class Atlas(planet.Planet):
         """Call inheritance from parent class"""
 
         super().__init__("Atlas")
+        self.visited = False
         self.print_welcome()
         self.data = {
             "jagged red peak": self.peak,
@@ -21,7 +22,12 @@ class Atlas(planet.Planet):
             "silver key": self.key,
             "key": self.key
         }
-        self.visited = True
+        self.directions = [
+            "north",
+            "south",
+            "east",
+            "west"
+        ]
         self.crystal_obtained = False
         self.rooms = [0, 1]
         self.placement = 0
@@ -35,13 +41,20 @@ class Atlas(planet.Planet):
 
     def action(self, text):
         """Processes an action from the user"""
-        object = self.query_NLP(text)
-        if object is False:
+        obj = self.query_NLP(text)
+        if obj is False:
             print("Invalid action")
 
-        self.data[object[1]](object[0])
-        if object == "look":
-            self.print_welcome()
+        if len(obj) < 2:
+            if obj[0] == "look":
+                self.visited = False
+                self.print_welcome()
+            # if obj[0] in self.directions:
+            #     self.directions[obj[0]]()
+            #     return False
+
+        else:
+            self.data[obj[1]](obj[0])
 
         # Final Action:
         return True
@@ -64,6 +77,7 @@ class Atlas(planet.Planet):
                   "south of your landing point, you notice a jagged red peak rising through the fog. It does not appear"
                   " to be too steep to climb. In the sky to the west, you notice a golden planet looming close by, "
                   "easily within a short flying distance. ")
+            self.visited = True
         else:
             print("You are on a blue, mist-covered planet that is covered in crystal. You are standing on a smooth, "
                   "flat area. There is a jagged red peak to the south. There is a golden planet in the sky to the "

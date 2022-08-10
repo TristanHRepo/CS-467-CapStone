@@ -1,5 +1,6 @@
 import json
 
+
 def check(item):
     """ Check if an item is in the inventory """
     # Load in json file of valid objects
@@ -65,5 +66,22 @@ def get_inv():
 
 def desc():
 
-
     return
+
+
+def main():
+    """ Main function for debugging """
+    print("\nCheck your inventory? Y/N")
+    option = input(">>")
+    if option.upper() == "Y":
+        with open("inventory.json", "r") as file:
+            inven = json.load(file)
+
+        print("\nYou check your inventory. You are carrying...")
+        for each in inven:
+            if inven[each] == "True":
+                print("-", each)
+
+
+if __name__ == "__main__":
+    main()

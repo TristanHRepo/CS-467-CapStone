@@ -47,10 +47,15 @@ class Eridanos(planet.Planet):
     def enter_planet(self):
         
         if self.visited == False:
-            print('Plunging cliffs, strange flora, roaring rapids, and the faint smell of sulphur. Welcome to Eridanos./n You have arrived on the top of a medium sized cliffside, but in the distance you can see something that reminds you of a/n collosal termite mound. You start down a trail leading down into ravine that looks like it will take you to the mound, and there appear/n to be several caves along the path.')
+            print('Plunging cliffs, strange flora, roaring rapids, and the faint smell of sulphur. Welcome to '
+                  'Eridanos./n You have arrived on the top of a medium sized cliffside, but in the distance you can '
+                  'see something that reminds you of a/n collosal termite mound. You start down a trail leading down '
+                  'into ravine that looks like it will take you to the mound, and there appear/n to be several caves '
+                  'along the path.')
             self.visited = True
         elif self.visited == True:
-            print("Welcome back to Eridanos! You see the path to the ravine still in front of you as well as the termite mound structure and the ravine caves.")
+            print("Welcome back to Eridanos! You see the path to the ravine still in front of you as well as the "
+                  "termite mound structure and the ravine caves.")
         return
 
     def ravine_path(self, action):
@@ -90,7 +95,8 @@ class Eridanos(planet.Planet):
             return
 
         if action.lower() == 'grab':
-            print("You reach into the river and pull out a tool that looks somewhat like a silver pickaxe. Definitely keeping this.")
+            print("You reach into the river and pull out a tool that looks somewhat like a silver pickaxe. Definitely "
+                  "keeping this.")
             self.tool = True
         elif action.lower() == 'continue':
             print("You have to get back to the river path to continue on.")
@@ -145,9 +151,11 @@ class Eridanos(planet.Planet):
 
         if action.lower() == 'interact':
             if self.tool == False:
-                print("It looks like you need to put something into the hole. You do see some moisture around it, as well as some silver flecks.")
+                print("It looks like you need to put something into the hole. You do see some moisture around it, "
+                      "as well as some silver flecks.")
             elif self.tool == True:
-                print("After putting the pickaxe into the opening, a fossilized claw comes out. THis is something worth noting and keeping.")
+                print("After putting the pickaxe into the opening, a fossilized claw comes out. THis is something "
+                      "worth noting and keeping.")
                 self.accomplished = True
         elif action.lower() == 'return':
             print("You head back toward the clearing with your ship.")

@@ -9,7 +9,8 @@ from Planets.Celaeno import Celaeno
 from Planets.Byss import Byss
 from Planets.Eridanos import Eridanos
 from Planets.Monarch import Monarch
-from Planets.crystals import Atlas
+from Planets.Atlas import Atlas
+from Planets.Pleione import Pleione
 from Planets.final import Asterone
 
 
@@ -158,13 +159,15 @@ class Engine:
 
     def engine(self):
         """Game play loop for the game"""
-
+        manually_closed = False
         while True:
 
             action = input(">>")
 
             if action == 'quit':
                 self.close()
+                manually_closed = True
+                break
 
             if action == 'inventory':
                 print(inventory.get_inv())
@@ -180,16 +183,14 @@ class Engine:
                     self.load()
                     continue
 
-            try:
-                room_status = self.planet.action(action)
-            except:
-                room_status = False
-                print("Invalid input")
+            room_status = self.planet.action(action)
 
             if room_status is True:
                 self.change_planet()
 
-        self.close()
+
+        if not manually_closed:
+            self.close()
         return
 
 
