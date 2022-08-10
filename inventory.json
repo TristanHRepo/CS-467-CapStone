@@ -5,5 +5,7 @@
     "coin": "False",
     "sapphire": "False",
     "insect": "False",
-    "pickaxe": "False"
+    "pickaxe": "False",
+    "tablet": "False",
+    "trident": "False"
 }
