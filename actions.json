@@ -182,11 +182,11 @@
   "help": [],
   "inventory": [],
   "look": [],
+  "left": [],
+  "right": [],
+  "drive": [],
   "north": [],
   "south": [],
   "east": [],
-  "west": [],
-  "left": [],
-  "right": [],
-  "drive": []
+  "west": []
 }

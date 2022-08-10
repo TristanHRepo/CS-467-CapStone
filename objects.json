@@ -43,5 +43,17 @@
   "tablet": "Maia",
   "hermes": "Maia",
   "car": "Celaeno",
-  "ship": "All planets"
+  "ship": "All planets",
+  "statue": "Desertum",
+  "pillar": "Desertum",
+  "upstream": "Desertum",
+  "downstream": "Desertum",
+  "contraption": "Desertum",
+  "building": "Desertum",
+  "inside": "Desertum",
+  "crystal": "Desertum",
+  "mirror": "Desertum",
+  "sundial": "Desertum",
+  "picture": "Desertum",
+  "stone": "Desertum"
 }
