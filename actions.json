@@ -187,5 +187,6 @@
   "east": [],
   "west": [],
   "left": [],
-  "right": []
+  "right": [],
+  "drive": []
 }
