@@ -1,0 +1,51 @@
+{
+    "room descriptions": {
+      "intro_text_long": "As you made you way to land on Monarch, you noticed it was tidally locked toward its sun, but at the terminator line had a lush jungle, so that's where you find yourself now. From up high, the trees were unlike anything you'd ever seen, but still comfortable familiar at the same time.",
+      "intro_text_short": "You've returned to the terminator line jungle on Monarch, still full of those fascinating flowers and bees."
+    },
+    "items": {
+      "flower": {
+        "actions": [          
+          "pluck",
+          "grab",
+          "prune",
+          "snip"
+        ],
+        "description": "While the flower itself is incredibly beautiful, something about it seems wrong. Of course. It had to be poisonous. Spectacular.",
+        "locked": "False"
+      },
+      "bee": {
+        "actions": [
+          "scoop",
+          "catch"
+        ],
+        "description": "You've managed to gently grab the bee-like insect, though that sting in your hand in unpleasant. And yes you're actually feeling better now, rather than worse. A rather unexpected outcome. This is worth keeping.",
+        "locked": "False"
+      }
+    },
+    "environment": {
+      "clearing": {
+        "actions": [
+          "look",
+          "walk"
+        ],
+        "description": "You managed to find a nice clearing in the jungle to set your ship down in. Unexpectedly, when you disembark, you hear a faint buzzing in the air. You expected more general silence. But regardless, you carry on, and also notice something like a archway of trees to the north of where you landed.",
+        "locked": "True"
+      },
+      "tree archway": {
+        "actions": [
+          "cross"          
+        ],
+        "description": "The archway itself is beautiful, but also clearly a natural occurrence rather than something sculpted or created.",
+        "locked": "True"
+      },
+      "pleasant jungle grove": {
+        "actions": [
+          "smell",
+          "inspect"
+        ],
+        "description": "While the forest is full of flowers, as you might expect, the strangest thing is that there appear to be a number of bee-like insects flying around. You certainly didn't expect to run into any life out here. Both the flowers and the bees are beautiful.",
+        "locked": "True"
+      }
+    }
+  }

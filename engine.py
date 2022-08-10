@@ -1,12 +1,13 @@
 import sys
 import json
 import inventory
-from Subaqueanus import Subaqueanus
-from Desertum import Desertum
-from Maia import Maia
-from Alcyone import Alcyone
-from crystals import Atlas
-from final import Asterone
+from Planets.Subaqueanus import Subaqueanus
+from Planets.Desertum import Desertum
+from Planets.Maia import Maia
+from Planets.Alcyone import Alcyone
+from Planets.Celaeno import Celaeno
+from Planets.crystals import Atlas
+from Planets.final import Asterone
 
 
 class Engine:
