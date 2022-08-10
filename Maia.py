@@ -5,6 +5,8 @@ from random import randint
 
 seed(1)
 
+print('What is your name?')
+x = input()
 
 class Maia(planet.Planet):
     """The Maia planet"""
@@ -23,32 +25,32 @@ class Maia(planet.Planet):
             "tablet": self.tablet,
             "chest": self.chest,
             "wall": self.wall,
-            "button": self.button
+            "button": self.button,
+            "key": self.key
         }
         self.rooms = [0, 1, 2, 3, 4, 5]
         self.placement = 0
-
-    def query_NLP(self, text):
-        """Placeholder function to query natural language parser."""
-
-        # value = self.validate_user_command(text)
-
-        action = text.rsplit()
-
-        return action
+        self.checkpoints = [False, False, False, False, False, False, False, False]
 
     def action(self, text):
         """Processes an action from the user"""
 
-        object = self.query_NLP(text)
-        if object is False:
+        object = self.validate_user_command(text)
+        if object[0] is None or object[1] is None:
             print("Invalid action")
+            return False
 
         self.data[object[1]](object[0])
 
-        return
+        # Final actions completed, return True to let engine know to move to next planet
+        if self.checkpoints[5] is True:
+            print("A portal appears...beckoning...")
+            return True
+
+        return False
 
     def enter_planet(self):
+
         print('You feel groggy.  You slowly sit up and look around.  You are in what appears to be an antique spaceship.')
         print('The ground is metallic with a hint of rust, and through a window you can see what looks like')
         print('the star Maia of the Pleiades system.  It reminds you of pictures you saw in an old textbook from')
@@ -67,11 +69,7 @@ class Maia(planet.Planet):
     def pool(self, action):
         """Interaction with pool"""
 
-        if self.placement != 0:
-            print("Invalid action")
-            return
-
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The pool has a treasure chest submerged in the water.")
         self.placement += 1
 
@@ -80,11 +78,8 @@ class Maia(planet.Planet):
     def chest(self, action):
         """Interaction with chest"""
 
-        if self.placement < 1:
-            print("Invalid action")
-            return
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The chest appears to have a keyhole.  The size of the keyhole appears to match the size of the key.")
             self.placement += 1
 
@@ -97,7 +92,7 @@ class Maia(planet.Planet):
     def wall(self, action):
         """Interaction with wall"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The wall has an indentation.  It is remarkably the same size and shape of the pentagonal tablet.")
             print("There is also a winged foot engraved on the wall of the ship.")
             self.placement += 1
@@ -107,15 +102,24 @@ class Maia(planet.Planet):
     def man(self, action):
         """Interaction with carbonite man"""
 
-        if action.lower() == 'look':
-            print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button.")
-        elif action.lower() == 'examine':
-            print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button")
-        elif action.lower() == 'take':
+        if action.lower() == 'examine':
             print("There is a vibranium key next to the carbonite man, and a cylindrical object with a button")
             self.placement += 1
 
         return
+
+    def key(self, action):
+        """Interaction with key"""
+
+        if action.lower() == 'examine':
+            print("It is your basic vibranium key, embossed with the phrase 'made in Wakanda'.")
+            self.placement += 1
+        if action.lower() == 'take':
+            print("You now have T'Challa's Key, which doesn't make sense.  But, today, nothing does...")
+            self.placement += 1
+
+        return
+
 
     def tablet(self, action):
         """Interaction with tablet"""
@@ -131,32 +135,30 @@ class Maia(planet.Planet):
     def cylinder(self, action):
         """Interaction with cylinder"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The cylindrical object with a very pushable button starts vibrating.")
+        if action.lower() == 'take':
+            print("You now own a replica (or IS IT?!) of a lightsaber.")
         
         return
         
     def button(self, action):
         """Interaction with button"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("The button wants to be pushed.")
         if action.lower() == 'push':
             print("A powerful blue beam emerges from what looks like a lightsaber.")
             print("It appears that this is not a weapon, however, as the beam projects a hologram")
             print("of a woman that looks eerily like Princess Leia, but she calls herself Princess Maia of Pleiades.")
-            print("Maia speaks.  Help me (player name)-wan Kenobi!  What is the name of my son?")
+            print('Maia speaks.  Help me ' + x + '-wan Kenobi!  What is the name of my son?')
             print("Type the word 'say' and then his name...")
             self.placement += 100
         return
 
     def hermes(self, action):
         """responding to Maia with Hermes as an answer...this part needs adjusting"""
-
-        if self.placement < 100:
-            print("You should not know that yet!")
-            return
-        if self.placement > 99:
+        if action.lower() == 'say':
             print("You are correct!  Hermes is the son of Maia!")
             print("The room begins to vibrate.  A very large 20-sided die appears.")
             self.placement += 1000
@@ -171,5 +173,6 @@ class Maia(planet.Planet):
         if self.placement > 999:
             dice = randint(0, 20)
             print("SUCCESS!  You rolled a ", dice)
-            print("A portal appears...beckoning...")
+            self.checkpoints[5] = True
+
         return

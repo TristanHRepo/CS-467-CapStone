@@ -24,25 +24,25 @@ class Alcyone(planet.Planet):
         self.rooms = [0, 1, 2, 3, 4, 5]
         self.placement = 0
 
-    def query_NLP(self, text):
-        """Placeholder function to query natural language parser."""
+        self.checkpoints = [False, False, False, False, False, False, False, False]
 
-        # value = self.validate_user_command(text)
-
-        action = text.rsplit()
-
-        return action
 
     def action(self, text):
         """Processes an action from the user"""
 
-        object = self.query_NLP(text)
-        if object is False:
+        object = self.validate_user_command(text)
+        if object[0] is None or object[1] is None:
             print("Invalid action")
+            return False
 
         self.data[object[1]](object[0])
 
-        return
+        # Final actions completed, return True to let engine know to move to next planet
+        if self.checkpoints[5] is True:
+            print("A portal appears...beckoning...")
+            return True
+
+        return False
 
     def enter_planet(self):
         print('You look around.  You get the sense that gravity does not exist, but you know that it must.')
@@ -52,6 +52,7 @@ class Alcyone(planet.Planet):
         print('It feels like you are hooked up to some wireless version of a virtual reality machine, and images')
         print('are being beamed into your head.  You get the sense that you can *will* yourself in any direction.')
         print('You scan the inner surface of your bubble, and their appears to be large seals to your left and right.')
+
         
         return
 
@@ -59,7 +60,7 @@ class Alcyone(planet.Planet):
     def bubble(self, action):
         """Interaction with bubble"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print("It is a bubble...nothing interesting here.  Maybe you should LOOK SEAL :)")
         self.placement += 1
 
@@ -68,7 +69,7 @@ class Alcyone(planet.Planet):
     def seal(self, action):
         """Interaction with seal"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print('There is some writing on the seal.  It references Mount Cyllene.')
             print('There is a small trident floating near the seal.')
             self.placement += 1
@@ -97,7 +98,7 @@ class Alcyone(planet.Planet):
     def wall(self, action):
         """Interaction with wall"""
 
-        if action.lower() == 'look':
+        if action.lower() == 'examine':
             print('The wall has an indentation.  It is remarkably the same size and shape of the pentagonal tablet.')
             print('You see Greek letters that spell the name ALCYONE.  This is odd, because you are convinced that')
             print('you have never been able to read Greek.  Something clearly is messing with your head!')
@@ -144,9 +145,7 @@ class Alcyone(planet.Planet):
         """Interaction with rock"""
 
         if action.lower() == 'take':
-            print('Success!')
-            print('You have defeated Poseidon and earned the undying respect of Alcyone!')
-            print('A portal appears...beckoning...')
+            print('WRONG CHOICE')
         return
 
     def paper(self, action):
@@ -155,14 +154,12 @@ class Alcyone(planet.Planet):
         if action.lower() == 'take':
             print('Success!')
             print('You have defeated Poseidon and earned the undying respect of Alcyone!')
-            print('A portal appears...beckoning...')
+            self.checkpoints[5] = True
         return
 
     def scissors(self, action):
         """Interaction with scissors"""
 
         if action.lower() == 'take':
-            print('Success!')
-            print('You have defeated Poseidon and earned the undying respect of Alcyone!')
-            print('A portal appears...beckoning...')
+            print('WRONG CHOICE')
         return

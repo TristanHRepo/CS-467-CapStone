@@ -19,26 +19,25 @@ class Celaeno(planet.Planet):
         }
         self.rooms = [0, 1, 2, 3, 4, 5]
         self.placement = 0
+        self.checkpoints = [False, False, False, False, False, False, False, False]
 
-    def query_NLP(self, text):
-        """Placeholder function to query natural language parser."""
-
-        # value = self.validate_user_command(text)
-
-        action = text.rsplit()
-
-        return action
 
     def action(self, text):
         """Processes an action from the user"""
 
-        object = self.query_NLP(text)
-        if object is False:
+        object = self.validate_user_command(text)
+        if object[0] is None or object[1] is None:
             print("Invalid action")
+            return False
 
         self.data[object[1]](object[0])
 
-        return
+        # Final actions completed, return True to let engine know to move to next planet
+        if self.checkpoints[5] is True:
+            print("A portal appears...beckoning...")
+            return True
+
+        return False
 
     def enter_planet(self):
         print('You look around.  You feel like you are 430 light years from Earth.')
@@ -57,10 +56,6 @@ class Celaeno(planet.Planet):
     def car(self, action):
         """Interaction with car"""
 
-        if self.placement != 0:
-            print("Invalid action")
-            return
-
         if action.lower() == 'examine':
             print("It is a Delorean.  It ironically has a flux capacitor and a fusion generator,")
             print("and a copy of Grays Sports Almanac in the front seat.")
@@ -78,10 +73,6 @@ class Celaeno(planet.Planet):
     def well(self, action):
         """Interaction with well"""
 
-        if self.placement < 1:
-            print("Invalid action")
-            return
-
         if action.lower() == 'examine':
             print("The well is deep.  You can see a handful of coins at the bottom.")
             self.placement += 1
@@ -90,10 +81,6 @@ class Celaeno(planet.Planet):
 
     def coin(self, action):
         """Interaction with coin"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
 
         if action.lower() == 'examine':
             print("The coin has an image of Atlas on it. You vaguely remember that Atlas was the father of Celaeno.")
@@ -117,10 +104,6 @@ class Celaeno(planet.Planet):
     def door(self, action):
         """Interaction with door"""
 
-        if self.placement != 0:
-            print("Invalid action")
-            return
-
         if action.lower() == 'examine':
             print("It is a brick door.  All in all, it is just another brick door in the wall.")
         elif action.lower() == 'open':
@@ -128,17 +111,14 @@ class Celaeno(planet.Planet):
             print("The brick road is yellow.  There are three forks to the road.")
             print("One leads to an emerald city in the distance.  One leads to a chocolate factory. ")
             print("The third one leads toward what looks like a giant moon.  You think to yourself:")
-            print("THAT IS NO MOON.  Suddenly, a portal appears.")
+            print("THAT IS NO MOON.")
+            self.checkpoints[5] = True
             self.placement += 1
 
         return
 
     def sapphire(self, action):
         """Interaction with sapphire"""
-
-        if self.placement != 0:
-            print("Invalid action")
-            return
 
         if action.lower() == 'examine':
             print("It is a beautiful sapphire.  You get the sense that it has magical powers,")
