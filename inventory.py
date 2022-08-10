@@ -1,6 +1,5 @@
 import json
 
-
 def check(item):
     """ Check if an item is in the inventory """
     # Load in json file of valid objects
@@ -49,4 +48,23 @@ def remove(item):
         json.dump(inven, file, indent=4)
 
 
-remove("silver key")
+def get_inv():
+    with open("inventory.json", "r") as file:
+        inven = json.load(file)
+
+    inventory = []
+
+    for item in inven:
+        if inven[item] == "True":
+            inventory.append(item)
+
+    file.close()
+
+    return inventory
+
+
+def desc():
+
+
+
+    return

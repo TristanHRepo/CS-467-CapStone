@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 class Desertum(planet.Planet):
     """The underwater planet"""
@@ -32,7 +33,7 @@ class Desertum(planet.Planet):
             "west": self.west
         }
 
-        self.checkpoints = [False, False, False, False, False, False]
+        self.checkpoints = [False, False, False, False, False, False, False]
         self.placement = 0
 
     def action(self, text):
@@ -52,6 +53,7 @@ class Desertum(planet.Planet):
 
         # Final actions completed, return True to let engine know to move to next planet
         if self.checkpoints[5] is True:
+            inventory.add("spherical stone")
             print("---------------------------------------------------------\n"
                   "You return to your ship!\n"
                   "10 planets done, what a journey\n"
@@ -59,7 +61,8 @@ class Desertum(planet.Planet):
                   "A beautiful solar eclipse covers the area and the desert planet turns dark and cool\n"
                   "It is amazing to behold\n"
                   "You turn on your ship and take off\n"
-                  "Space really is beautiful....")
+                  "Space really is beautiful....\n"
+                  "---------------------------------------------------------\n")
             return True
 
         # Final action not complete, so return False
@@ -138,6 +141,7 @@ class Desertum(planet.Planet):
         elif action == 'take' and self.checkpoints[6] is False:
             print("You pick up the crystal")
             self.checkpoints[6] = True
+            self.checkpoints[2] = False
 
         elif (action == "drop" or action == "use") and self.placement == 5:
             print("You place the cystal on the pedestal\n"
@@ -180,7 +184,7 @@ class Desertum(planet.Planet):
                   "It appears to be attached to a swivel on the base\n"
                   "The contraption has two handles that look to be for positioning purposes")
 
-        elif (action == 'turn' or action == 'use') and self.checkpoints[0] is True:
+        elif action == 'turn' or action == 'use':
             print("You begin to turn the mirror toward the pillar you found from earlier\n"
                   "As you turn the mirror, you notice the light beam and get an idea of how to work this thing\n"
                   "Finally you position the mirror to shine the beam of light at the pillar\n"
@@ -201,6 +205,7 @@ class Desertum(planet.Planet):
                   "This color gradually turns into an intense red color at the South\n"
                   "The red side of the sun also seems to be reaching toward the South")
             self.placement = 4
+            return
 
         if self.placement != 4:
             print("Invalid action")
@@ -212,11 +217,11 @@ class Desertum(planet.Planet):
                   "However, the red side of the sun and the Gnomon of the sundial face North\n"
                   "You also notice that the face of the sundial can be turned")
 
-        if action == 'turn':
+        elif action == 'turn':
             print("You turn the sundial..\n"
                   "As you make your revolution you notice the sundial lock in place\n"
                   "This happens when the picture on the sundial matches the picture on the platform\n"
-                  "You then see a ray of light project from the tip of the Gnomon into the pillar to the South\n")
+                  "You then see a ray of light project from the tip of the Gnomon into the pillar to the South")
             self.checkpoints[1] = True
 
         return
@@ -240,7 +245,7 @@ class Desertum(planet.Planet):
     def statue(self, action):
         """The statue to the North"""
 
-        if action == 'move' and (self.placement == 0 or self.placement == 2):
+        if action == 'move' and (self.placement == 0 or self.placement == 4):
             print("You approach the formation...\n"
                   "The formation turns out to be some kind of carved pillar about 15 feet high.\n"
                   "At the top of the pillar you see three holes one facing North\n"
@@ -360,7 +365,6 @@ class Desertum(planet.Planet):
             self.action('move ship')
         else:
             print("Can't go South from here")
-
         return
 
     def east(self):

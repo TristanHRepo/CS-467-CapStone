@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 class Subaqueanus(planet.Planet):
     """The underwater planet"""
@@ -23,6 +24,14 @@ class Subaqueanus(planet.Planet):
             "tools": self.tools,
             "ship": self.ship
         }
+
+        self.directions = {
+            "north": self.north,
+            "south": self.south,
+            "east": self.east,
+            "west": self.west
+        }
+
         self.checkpoints = [False, False, False, False, False, False, False, False]
         self.placement = 0
 
@@ -30,9 +39,14 @@ class Subaqueanus(planet.Planet):
         """Processes an action from the user"""
 
         object = self.validate_user_command(text)
-        if object[0] is None or object[1] is None:
+        if object[0] is None:
             print("Invalid action")
             return False
+
+        if object[1] is None:
+            if object[0] in self.directions:
+                self.directions[object[0]]()
+                return False
 
         self.data[object[1]](object[0])
 
@@ -45,7 +59,8 @@ class Subaqueanus(planet.Planet):
                   "Your ship struggles but then quickly gains speed\n"
                   "You notice your new friend helping you gain thrust by pushing your ship!\n"
                   "You finally emerge from the water, and being your ascent into the sky\n"
-                  "On to the next planet!")
+                  "On to the next planet!\n"
+                  "---------------------------------------------------------\n")
             return True
 
         # Final action not complete, so return False
@@ -110,7 +125,7 @@ class Subaqueanus(planet.Planet):
                 print("You enter the cave.\n"
                       "You return to the room with the glowing sphere on top of the pile of junk.\n"
                       "Maybe something of use is in the junk pile.\n"
-                      "Also, their are the sculptures.")
+                      "Also, there are the sculptures.")
                 self.placement = 2
 
         return
@@ -214,6 +229,7 @@ class Subaqueanus(planet.Planet):
                   "As you examine the piece, you notice that it shipped into a perfect prism.\n"
                   "This will be a great artifact for this planet! You store the prism away in your inventory.")
             self.checkpoints[7] = True
+            inventory.add("prism")
         return
 
     def tools(self, action):
@@ -319,5 +335,49 @@ class Subaqueanus(planet.Planet):
               "You establish North on this planet using your onboard compass system.\n"
               "To the North you see an opening in the world. A dark abyss. It seems to be some type of cave.\n"
               "To the South, you see your ship.")
+
+        return
+
+    def north(self):
+        """Go north options"""
+
+        if self.placement == 0:
+            self.action('enter cave')
+        elif self.placement == 1:
+            self.action('follow mucus')
+        else:
+            print("Can't go North from here")
+
+        return
+
+    def south(self):
+        """Go south options"""
+
+        if self.placement == 2:
+            self.action('return ship')
+        elif self.placement == 1:
+            self.action('return ship')
+        else:
+            print("Going into the deep blue from here seems scary\n"
+                  "I think I should stick to this area")
+        return
+
+    def east(self):
+        """Go east options"""
+
+        if self.placement == 0:
+            print("I could go East, but what about that awesome cave ahead?")
+        else:
+            print("There is no East in this cave!")
+
+        return
+
+    def west(self):
+        """Go west options"""
+
+        if self.placement == 0:
+            print("I could go West, but what about that awesome cave ahead?")
+        else:
+            print("There is no West in this cave!")
 
         return

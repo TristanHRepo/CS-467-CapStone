@@ -1,5 +1,6 @@
 import sys
 import json
+import inventory
 from Subaqueanus import Subaqueanus
 from Desertum import Desertum
 from Maia import Maia
@@ -140,13 +141,14 @@ class Engine:
         """Changes planets for the game"""
 
         pos = self.planets.index(type(self.planet).__name__)
-        print(pos)
         self.game[pos] = 1
 
         for index in range(len(self.game)):
             if not self.game[index]:
                 self.planet = self.get_planet(self.planets[index])
                 break
+
+        self.save_game()
 
         return
 
@@ -158,7 +160,13 @@ class Engine:
             action = input(">>")
 
             if action == 'quit':
-                break
+                self.close()
+
+            if action == 'inventory':
+
+                print(inventory.get_inv())
+
+                continue
 
             if action == 'savegame':
                 self.save_game()
