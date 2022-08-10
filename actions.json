@@ -1,0 +1,192 @@
+{
+  "examine": [
+    "see",
+    "look at",
+    "view",
+    "observe",
+    "watch",
+    "behold",
+    "peek",
+    "inspect"
+  ],
+  "move": [
+    "flee",
+    "go",
+    "pass",
+    "travel",
+    "approach",
+    "walk",
+    "run",
+    "exit",
+    "leave",
+    "travel",
+    "progress"
+  ],
+  "take": [
+    "pick up",
+    "add",
+    "pick",
+    "collect",
+    "grab",
+    "hold",
+    "reach",
+    "seize",
+    "catch",
+    "gather"
+  ],
+  "pull": [
+    "drag",
+    "remove",
+    "tug",
+    "haul",
+    "tow",
+    "lug",
+    "twist",
+    "pry",
+    "yank",
+    "clasp",
+    "clutch",
+    "grip"
+  ],
+  "poke": [
+    "prod",
+    "jab",
+    "nudge",
+    "tap",
+    "dig"
+  ],
+  "talk": [
+    "say",
+    "chat",
+    "communicate",
+    "commune",
+    "converse",
+    "speak",
+    "tell",
+    "chatter",
+    "dialogue"
+  ],
+  "use": [
+    "employ",
+    "make use",
+    "handle",
+    "do",
+    "operate",
+    "utilize",
+    "work"
+  ],
+  "listen": [
+    "hear",
+    "attend",
+    "tune",
+    "eavesdrop",
+    "monitor"
+  ],
+  "turn": [
+    "rotate",
+    "transform",
+    "shift",
+    "twist",
+    "curve",
+    "spin",
+    "revolve",
+    "twirl",
+    "roll",
+    "swivel"
+  ],
+  "taste": [
+    "consume",
+    "devour",
+    "ingest",
+    "eat",
+    "swallow",
+    "chew",
+    "bite",
+    "munch",
+    "snack",
+    "lunch",
+    "dinner"
+  ],
+  "touch": [
+    "feel",
+    "stroke",
+    "caress",
+    "fondle",
+    "handle",
+    "manipulate"
+  ],
+  "open": [
+    "unlock",
+    "unfasten",
+    "undo",
+    "unbar",
+    "access"
+  ],
+  "drop": [
+    "put",
+    "place",
+    "release",
+    "set",
+    "deposit",
+    "lay"
+  ],
+  "enter": [
+    "go into",
+    "walk into"
+  ],
+  "follow": [
+    "go after",
+    "chase"
+  ],
+  "answer": [
+    "respond",
+    "reply",
+    "response"
+  ],
+  "throw": [
+    "punt",
+    "launch",
+    "hurl",
+    "toss",
+    "fling",
+    "lob",
+    "propel",
+    "cast"
+  ],
+  "explore": [
+    "survey",
+    "investigate"
+  ],
+  "return": [
+    "go back",
+    "start over",
+    "home"
+  ],
+  "cross": [],
+  "repair": [
+    "fix",
+    "mend",
+    "restore"
+  ],
+  "break": [
+    "separate",
+    "split",
+    "bust",
+    "divide"
+  ],
+  "push": [
+    "press"
+  ],
+  "scan": [],
+  "interact": [],
+  "help": [],
+  "inventory": [],
+  "look": [],
+  "left": [],
+  "right": [],
+  "drive": [],
+  "north": [],
+  "south": [],
+  "east": [],
+  "west": []
+}

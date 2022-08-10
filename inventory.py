@@ -65,6 +65,5 @@ def get_inv():
 
 def desc():
 
-    # Return description of item
 
     return
