@@ -5,8 +5,7 @@ from random import randint
 
 seed(1)
 
-print('What is your name?')
-x = input()
+
 
 class Maia(planet.Planet):
     """The Maia planet"""
@@ -62,7 +61,9 @@ class Maia(planet.Planet):
         print('and the window.  The man reminds you of a legendary archaeologist from 20th century cinema.')
         print('You get the sense that someone is playing an elaborate practical joke on you')
         print('by conflating a few different things that do not quite belong together.')
-        
+        print('What is your name?')
+        global x
+        x = input()
         return
     
     
