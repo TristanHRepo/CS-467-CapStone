@@ -78,6 +78,11 @@ class Alcyone(planet.Planet):
     def trident(self, action):
         """Interaction with trident"""
 
+        if action.lower() == 'examine':
+            print('The trident resembles, well, a TRIDENT.  It reminds you a bit of Thors hammer, but it is')
+            print('most certainly shaped like a trident.  You are suddenly craving chocolate milk, you hear a')
+            print('voice that says <there is no Dana, only Zuul>, and you feel COMPELLED to take that trident.')
+
         if action.lower() == 'take':
             print('You now hold the trident')
             self.placement += 1
@@ -129,7 +134,7 @@ class Alcyone(planet.Planet):
         if action.lower() == 'answer':
             print("Poseidon speaks again:  What is the name of my true love?")
             ans8 = input(">>")
-            print('You typed' + ans8 + 'but I hear what I want to hear!')
+            print('You typed' + ans9 + 'but I hear what I want to hear!')
             print('Poseidon says:  I think I heard ALCYONE from you!  Yes, or, at least I hope so!')
             print('I am quite the narcissist, but I believe')
             print('I was capable of love.  But hey, mythology can be confusing, especially when you are forever')
