@@ -126,11 +126,6 @@ class Desertum(planet.Planet):
     def crystal(self, action):
         """Crystal actions"""
 
-        if action == 'examine' and self.checkpoints[6] is True:
-            print("A perfectly spherical crystal that is cloudy inside\n"
-                  "it's quiet beautiful actually\n"
-                  "I wonder if the crystal could be used from something")
-
         if self.placement != 5:
             print("Invalid action")
             return
