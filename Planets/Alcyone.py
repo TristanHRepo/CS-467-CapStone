@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 
 class Alcyone(planet.Planet):
@@ -85,6 +86,7 @@ class Alcyone(planet.Planet):
 
         if action.lower() == 'take':
             print('You now hold the trident')
+            inventory.add("trident")
             self.placement += 1
             print('A shimmering head descends from above you.  Your brain flashes an image of Poseidon, and you know')
             print('That it is him.  "I loved her.  I truly did", the giant gaseous image of Poseidon exclaims.')

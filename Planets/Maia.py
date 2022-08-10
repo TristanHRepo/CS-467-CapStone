@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 from random import seed
 from random import randint
 
@@ -127,6 +128,7 @@ class Maia(planet.Planet):
 
         if action.lower() == 'take':
             print("You now have the tablet.")
+            inventory.add("tablet")
         elif action.lower() == 'examine':
             print("The tablet is shaped like a pentagon.  There is a winged foot on the tablet.")
             self.placement += 1

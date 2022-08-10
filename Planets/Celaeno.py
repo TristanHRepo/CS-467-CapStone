@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 
 class Celaeno(planet.Planet):
@@ -125,6 +126,7 @@ class Celaeno(planet.Planet):
             print("but given how crazy today has been, it could be JUST ABOUT ANYTHING.  Take it!")
         elif action.lower() == 'take':
             print("You now own your very own quasi-magical sapphire!")
+            inventory.add("sapphire")
             self.placement += 1
 
         return
