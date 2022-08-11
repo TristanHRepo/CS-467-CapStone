@@ -20,14 +20,15 @@ class Atlas(planet.Planet):
             "red crystal": self.crystal,
             "crystal": self.crystal,
             "silver key": self.key,
-            "key": self.key
+            "key": self.key,
+            "path": self.path
         }
-        self.directions = [
-            "north",
-            "south",
-            "east",
-            "west"
-        ]
+        self.directions = {
+            "north": self.north,
+            "south": self.south,
+            "east": self.east,
+            "west": self.west
+        }
         self.crystal_obtained = False
         self.rooms = [0, 1]
         self.placement = 0
@@ -41,30 +42,28 @@ class Atlas(planet.Planet):
 
     def action(self, text):
         """Processes an action from the user"""
-        obj = self.query_NLP(text)
-        if obj is False:
-            print("Invalid action")
+        obj = self.validate_user_command(text)
+        if obj[0] is None:
+            print("Invalid action;")
+            return False
 
-        if len(obj) < 2:
-            if obj[0] == "look":
-                self.visited = False
-                self.print_welcome()
-            # if obj[0] in self.directions:
-            #     self.directions[obj[0]]()
-            #     return False
-
-        else:
-            try:
-                self.data[obj[1]](obj[0])
-            except:
-                print("Invalid action; please try again.")
+        if obj[1] is None:
+            if obj[0] in self.directions:
+                self.directions[obj[0]]()
                 return False
 
-        # Final Action:
-        return True
+        self.data[obj[1]](obj[0])
 
-        # DEFAULT:
-        # return False
+        # Actions completed
+        if self.placement == 4:
+            print("---------------------------------------------------------\n"
+                  "You board your ship, and set a path for the misty blue planet.\n"
+                  "You can't wait to see what awaits you next...\n"
+                  "---------------------------------------------------------\n")
+            return True
+
+        # Final Action:
+        return False
 
     def print_welcome(self):
         """
@@ -79,34 +78,40 @@ class Atlas(planet.Planet):
                   "geode. You land on a flat, smooth blue area that is elevated out of the mist, and look around. The "
                   "ground is nearly entirely solid crystal, which rises and falls into hills and valleys. \n\nTo the "
                   "south of your landing point, you notice a jagged red peak rising through the fog. It does not appear"
-                  " to be too steep to climb. In the sky to the west, you notice a golden planet looming close by, "
-                  "easily within a short flying distance. ")
+                  " to be too steep to climb. In the sky to the west, you notice the golden planet you just left. To"
+                  " the east, meanwhile, you spot an illuminated, sandy-colored planet not too far away. ")
             self.visited = True
         else:
             print("You are on a blue, mist-covered planet that is covered in crystal. You are standing on a smooth, "
                   "flat area. There is a jagged red peak to the south. There is a golden planet in the sky to the "
-                  "west. ")
+                  "west. There is a sandy-colored planet to the east. ")
 
     def peak(self, action):
         """Interaction with peak"""
 
         if self.placement != 0:
-            print("Invalid action")
+            print("Invalid peak action")
             return
 
         act = action.lower()
-        if act == 'south' or act == 'go south' or act == 'jagged red peak' or act == 'go jagged red peak':
+        if act == 'move':
             print("You make your way towards the jagged red peak rising over the mist to the south. You have to descend"
                   " down into the mist to reach it. As you walk, you notice the ground below the surface of the mist is"
                   " much more rugged, not smooth and flat like the area where your ship landed. It's easy to lose your "
                   "footing, so you walk very slowly and carefully.\n\n"
                   "When you get to the peak, you find that there is a seemingly natural path built into it, spiraling "
                   "up to the top. You sense heat pulsing from inside the red crystalline structure.")
+            self.placement += 1
 
         elif act == 'examine':
             print("A jagged red peak that rises over the mist covering the planet. It seems to be made of red crystal.")
 
-        elif act == 'climb' or act == 'follow':
+    def path(self, action):
+        if self.placement != 1:
+            print("Invalid path action")
+
+        act = action.lower()
+        if act == "move":
             print("You climb the winding path out of the mist with relative ease, though you have to proceed with "
                   "caution. As you reach the top of the peak, you notice that suspended in the air at eye level is a "
                   "small, glittering, round red crystal.")
@@ -114,7 +119,7 @@ class Atlas(planet.Planet):
 
     def crystal(self, action):
         """ Interaction with crystal """
-        if self.placement != 1:
+        if self.placement != 2:
             print("You cannot do that now!")
             return
 
@@ -131,19 +136,20 @@ class Atlas(planet.Planet):
                   "a white sigil in the shame of a flame begin to glow.")
             inventory.add("red crystal")  # Add to inventory file
             self.crystal_obtained = True
-
-        elif act == 'go':
             self.placement += 1
 
     def sigil(self, action):
         """Interaction with sigil"""
 
-        if self.placement != 1:
+        if self.placement != 3:
             print("Invalid action; please try again")
             return
 
         act = action.lower()
-        if act == 'examine':
+        if act == 'move':
+            print("You make your way to the white sigil. Up close, you notice a strange marker in the middle. Look "
+                  "closer?")
+        elif act == 'examine':
             print("You examine the white sigil. It appears to be a natural feature of the ground beneath your feet, "
                   "rather than something that has been painted there. It makes a pointed shape that appears to "
                   "resemble a flame. In the center, there is a raised circle marking. ")
@@ -164,7 +170,7 @@ class Atlas(planet.Planet):
 
     def key(self, action):
         """ Interaction with key """
-        if self.placement != 0:
+        if self.placement != 3:
             print("You can't do that here. ")
             return
 
@@ -172,9 +178,35 @@ class Atlas(planet.Planet):
         if act == 'take':
             inventory.add("silver key")
             print("You pick up the key and add it to your inventory.")
+            self.placement += 1
 
         elif act == 'examine':
             print("The key is silver and encrusted with gems. It is of standard size and shape otherwise.")
 
         elif act == 'touch':
             print("You touch the key. It continues to float there.")
+
+    def north(self):
+        """ Go north """
+        print("You can't go north right now. ")
+
+    def south(self):
+        """ Go south """
+        if self.placement == 0:
+            self.action("go jagged red peak")
+        else:
+            print("You can't go south right now. ")
+
+    def east(self):
+        """ Go east """
+        if self.placement < 3:
+            print("You get the feeling you haven't accomplished everything you need to here.\n"
+                  "You decide to stay on this planet until you have.")
+        elif self.placement == 3:
+            self.action("go sigil")
+
+    def west(self):
+        """ Go west """
+        if self.placement < 4:
+            print("You get the feeling you haven't accomplished everything you need to here.\n"
+                  "You decide to stay on this planet until you have.")

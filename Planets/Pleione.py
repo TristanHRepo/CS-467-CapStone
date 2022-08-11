@@ -20,7 +20,16 @@ class Pleione(planet.Planet):
             "flowers": self.flowers,
             "crystal shard": self.shard,
             "shard": self.shard,
-            "sparkle": self.sparkle
+            "sparkle": self.sparkle,
+            "crystal": self.crystal,
+            "red crystal": self.crystal,
+            "small red crystal": self.crystal
+        }
+        self.directions = {
+            "north": self.north,
+            "south": self.south,
+            "east": self.east,
+            "west": self.west
         }
         self.cured = False
         self.rooms = [0, 1, 2, 3]
@@ -35,18 +44,25 @@ class Pleione(planet.Planet):
 
     def action(self, text):
         """Processes an action from the user"""
-        obj = self.query_NLP(text)
-        if obj is False:
+        obj = self.validate_user_command(text)
+        if obj[0] is None:
             print("Invalid action")
+            return False
 
-        if len(obj) < 2:
-            if obj[0] == "look":
-                self.visited = False
-                self.print_welcome()
-        else:
-            self.data[obj[1]](obj[0])
+        if obj[1] is None:
+            if obj[0] in self.directions:
+                self.directions[obj[0]]()
+                return False
+
+        self.data[obj[1]](obj[0])
 
         # Final Action:
+        if self.placement == 3:
+            print("---------------------------------------------------------\n"
+                  "You board your ship and make way for the sandy-colored star to the east. \n"
+                  "You have a feeling that you are nearing the end of your journey... \n"
+                  "---------------------------------------------------------\n")
+            return True
 
         return False
 
@@ -65,7 +81,8 @@ class Pleione(planet.Planet):
                   "ground is thickly coated with flowers, but they easily yield to your touch, should you wish to "
                   "push them aside. \n\nTo the north, you can make out a dull grey patch on the surface. The ground "
                   "seems patchy, as though the flowers are not so dense there. Towards the east, you can see a blue "
-                  "planet looming close in the sky. Its surface seems to be swirling with mist. ")
+                  "planet looming close in the sky.\n")
+            print("Push the flowers aside?")
             self.visited = True
         else:
             if self.cured:
@@ -81,13 +98,13 @@ class Pleione(planet.Planet):
         """Interaction with flowers"""
 
         if self.placement != 0:
-            print("Invalid action")
+            print("There are no living flowers here!")
             return
 
         act = action.lower()
         if act == 'push':
-            print("You part the flowers where you stand. Beneath the petals, you find a small, round, glittering red "
-                  "crystal. You sense that it is warm to the touch.")
+            print("You part the flowers where you stand. Beneath the petals, you find a tiny fragment of a red "
+                  "crystal. It's a shard. You sense that it is warm to the touch. This seems familiar... ")
             if inventory.check("red crystal"):
                 print("It looks identical in makeup to the red crystals you saw on Atlas. The only difference is that "
                       "this one is even smaller, a tiny crystal shard.\n"
@@ -122,15 +139,12 @@ class Pleione(planet.Planet):
     def patch(self, action):
         """Interaction with grey patch"""
 
-        if self.placement != 1:
-            print("Invalid action; please try again")
-            return
-
         act = action.lower()
-        if act == 'go':
+        if act == 'move':
             print("You make your way northward, and find that the flower petals here have turned grey. The flowers "
                   "appear to be wilting and dying, and as a result it is easier to see the earth beneath. You sense "
                   "that the temperature in this area has sharply dropped. On the surface, you can see a sparkle. ")
+            self.placement += 1
 
         elif act == 'examine':
             print("A patch of land on the planet Pleione where all of the flowers covering the surface have turned "
@@ -138,7 +152,6 @@ class Pleione(planet.Planet):
                   "petals.\n"
                   "Because the flowers are not so thick here, you can see the earth beneath. Your eyes catch on a "
                   "sparkle on the surface. ")
-            self.placement += 1
 
         elif act == 'talk':
             print("The dull grey patch doesn't respond to you. ")
@@ -152,7 +165,7 @@ class Pleione(planet.Planet):
     def sparkle(self, action):
         """ Interaction with sparkle """
         if self.placement != 2:
-            print("You're not in the right place for that. ")
+            print("You're not in the right place for that. You're: ", self.placement)
             return
 
         act = action.lower()
@@ -194,3 +207,23 @@ class Pleione(planet.Planet):
 
         elif act == 'examine':
             print("A pretty golden flower that has a magical property to it. It glows with life. ")
+
+    def north(self):
+        """ Go north """
+        if self.placement == 0 or self.placement == 1:
+            self.action("go dull grey patch")
+        else:
+            print("You can't go north right now. ")
+
+    def south(self):
+        """ Go south """
+        print("You can't go south right now. ")
+
+    def east(self):
+        """ Go east """
+        if self.placement < 3:
+            print("You really ought to investigate the dull grey patch before you leave...")
+
+    def west(self):
+        """ Go west """
+        print("You've already been west! You should explore elsewhere for now. ")

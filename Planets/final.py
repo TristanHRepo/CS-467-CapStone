@@ -7,7 +7,7 @@ class Asterone(planet.Planet):
 
     def __init__(self):
         """Call inheritance from parent class"""
-
+        self.visited = False
         super().__init__("Asterone")
         self.print_welcome()
         self.data = {
@@ -16,14 +16,24 @@ class Asterone(planet.Planet):
             "stairs": self.tower,
             "door": self.door,
             "room": self.room,
+            "control room": self.room,
+            "terminal": self.button,
             "button": self.button,
             "journal": self.log,
             "log": self.log,
-            "datalog": self.log
+            "datalog": self.log,
+            "key": self.key,
+            "silver key": self.key
         }
-        self.visited = True
+        self.directions = {
+            "north": self.north,
+            "south": self.south,
+            "east": self.east,
+            "west": self.west
+        }
         self.rooms = [0, 1, 2]
         self.door_locked = True
+        self.done = False
         self.placement = 0
 
     def query_NLP(self, text):
@@ -35,19 +45,24 @@ class Asterone(planet.Planet):
 
     def action(self, text):
         """Processes an action from the user"""
-        object = self.query_NLP(text)
-        if object is False:
+        obj = self.validate_user_command(text)
+        if obj[0] is None:
             print("Invalid action")
+            return False
 
-        self.data[object[1]](object[0])
-        if object == "look":
-            self.print_welcome()
+        if obj[1] is None:
+            if obj[0] in self.directions:
+                self.directions[obj[0]]()
+                return False
+
+        self.data[obj[1]](obj[0])
 
         # Final Action:
-        return True
+        if self.done:
+            return True
 
         # DEFAULT:
-        # return False
+        return False
 
     def print_welcome(self):
         """
@@ -56,7 +71,7 @@ class Asterone(planet.Planet):
         """
         if not self.visited:
             print("Finally nearing the end of your journey, you navigate your ship towards the furthest mass in the "
-                  "cluster. At a distance, the planet appears to be blue. But as you get closer, you realize that it "
+                  "cluster. \nAt a distance, the planet appears to be blue. But as you get closer, you realize that it "
                   "is burning in every color you can imagine, possessing the brightest glow you've seen so far. The "
                   "spectrum is mesmerizing. All over the planet, you can see glowing pools that pulse with various "
                   "colors. Reaching into the sky is a tower of strange, multicolored crystal, consisting of "
@@ -65,14 +80,15 @@ class Asterone(planet.Planet):
                   "mingling and flowing together. There is a large flat area that is perfect for landing your ship, "
                   "as though it were made for this purpose. As you exit your ship, you notice the landing zone is "
                   "surrounded by liquid, like a moat, on all sides, but there is a path to the north that stretches "
-                  "over the liquid, leading towards the tower. /n/nFar in the distant southern sky, in the direction "
+                  "over the liquid, leading towards the tower. \n\nFar in the distant southern sky, in the direction "
                   "from which you just came, you can see the golden-hued planet glimmering softly, though it would be "
                   "impossible to see its flowers if you didn't know they were there.")
+            self.visited = True
         else:
             print("You land on a bright, primarily blue planet, far away from the others. Up close, you can see the "
                   "planet is multicolored. There are pools of glowing colorful liquids. There is a tall tower to the "
                   "north that looks to be made of bismuth. Your ship is on a large, flat area surrounded by glowing "
-                  "liquid. /n/nThere is a path to the north that reaches over the liquid. Far to the south is the "
+                  "liquid. \n\nThere is a path to the north that reaches over the liquid. Far to the south is the "
                   "golden planet. ")
 
     def path(self, action):
@@ -104,8 +120,8 @@ class Asterone(planet.Planet):
             return
 
         act = action.lower()
-        if act == 'climb':
-            print("You climb the stairs of the crystal tower. \n\n At the top of the tower, you find a door with a "
+        if act == 'move':
+            print("You climb the stairs of the crystal tower. \n\nAt the top of the tower, you find a door with a "
                   "rather conspicuous keyhole.")
 
         elif act == 'examine':
@@ -131,6 +147,7 @@ class Asterone(planet.Planet):
             if inventory.check("silver key"):
                 print("The key unlocks the door without a hitch. ")
                 inventory.remove("silver key")
+                self.door_locked = False
             else:
                 print("You have no key!")
 
@@ -155,6 +172,7 @@ class Asterone(planet.Planet):
         act = action.lower()
         if act == 'use':
             print("The key unlocks the door without a hitch. ")
+            self.door_locked = False
 
     def room(self, action):
         """ Interaction with room """
@@ -236,7 +254,8 @@ class Asterone(planet.Planet):
                   'discovered a disturbance in the temperature here, where due to the cold, all of the affected flowers'
                   ' were wilting and greying. But using our fire crystal from Atlas, we were able to warm them up and '
                   'bring them back to life. \n\n'
-                  'Desertum: The sandy star. \n\n'
+                  'Desertum: The sandy star. Here, we found a mystical sundial that functioned as a puzzle. We saw'
+                  'a strange statue \n\n'
                   'Asterope: You Are Here\n\n')
             print('At the end of it all, the display reads simply, "Transmission received!"')
             input("Press any key to continue...")
@@ -244,4 +263,25 @@ class Asterone(planet.Planet):
                   "with your home planet, sharing the details of your adventure with them.")
             print("\nWe hope you enjoyed our game. Project: Pleiades was created by Tristan Harville, Gary Lutwen, "
                   "Sarah Doss, and Christopher Gundlach. \nThank you for playing! ")
+            self.done = True
+            return True
 
+    def north(self):
+        """ Go north """
+        if self.placement == 0:
+            self.action("follow path")
+        else:
+            print("You can't go north right now. ")
+
+    def south(self):
+        """ Go south """
+        print("You can't go south right now. ")
+
+    def east(self):
+        """ Go east """
+        if self.placement < 3:
+            print("You really ought to investigate the dull grey patch before you leave...")
+
+    def west(self):
+        """ Go west """
+        print("You've already been west! You should explore elsewhere for now. ")

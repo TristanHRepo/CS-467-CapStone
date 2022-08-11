@@ -20,7 +20,8 @@
     "exit",
     "leave",
     "travel",
-    "progress"
+    "progress",
+    "climb"
   ],
   "take": [
     "pick up",
