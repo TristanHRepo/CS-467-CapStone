@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 class Byss(planet.Planet):
 
@@ -143,5 +144,6 @@ class Byss(planet.Planet):
                 "You reached into the well, just to see what was there, and you came away with a beautiful geode. "
                 "This is exactly the sort of thing you were looking for. Time to move on to a new planet.")
             self.accomplished = True
+            inventory.add("geode")
 
         return
