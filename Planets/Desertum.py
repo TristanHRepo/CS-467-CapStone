@@ -49,6 +49,10 @@ class Desertum(planet.Planet):
                 self.directions[object[0]]()
                 return False
 
+        if object[1] not in self.data:
+            print("Invalid action")
+            return False
+
         self.data[object[1]](object[0])
 
         # Final actions completed, return True to let engine know to move to next planet

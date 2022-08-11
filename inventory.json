@@ -6,5 +6,8 @@
     "sapphire": "False",
     "insect": "False",
     "pickaxe": "False",
-    "prism": "True"
+    "tablet": "False",
+    "trident": "False",
+    "prism": "True",
+    "spherical stone": "False"
 }
