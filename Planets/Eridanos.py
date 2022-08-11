@@ -38,11 +38,18 @@ class Eridanos(planet.Planet):
         """Processes an action from the user"""
 
         object = self.validate_user_command(text)
-        if object[0] is None or object[1] is None:
+        if object[0] is None:
             print("Invalid action")
             return False
 
-        self.data[object[1]](object[0])
+        if object[1] is None:
+            if object[0] in self.directions:
+                self.directions[object[0]]()
+                return False
+
+        if object[1] not in self.data:
+            print("Invalid action")
+            return False
 
         # Final actions completed, return True to let engine know to move to next planet
         if self.accomplished == True:
