@@ -64,9 +64,30 @@ def get_inv():
     return inventory
 
 
-def desc():
+def check_inv(action):
+    """Checks your journal for artifacts that you can look at"""
 
-    return
+    inv = get_inv()
+
+    for item in inv:
+        if item in action:
+            desc = get_desc(item)
+            print(desc)
+            return True
+
+    return False
+
+
+def get_desc(item):
+    """Returns the description of an item"""
+    with open("inv_descriptions.json", "r") as file:
+        descriptions = json.load(file)
+
+        description = descriptions[item]
+
+    file.close()
+
+    return description
 
 
 def main():

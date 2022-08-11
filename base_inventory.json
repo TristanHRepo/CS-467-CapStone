@@ -1,1 +1,13 @@
-{"silver key": "False", "red crystal": "False", "golden flower": "False", "coin": "False", "sapphire": "False", "insect": "False", "pickaxe": "False"}
+{
+  "silver key": "False",
+  "red crystal": "False",
+  "golden flower": "False",
+  "coin": "False",
+  "sapphire": "False",
+  "insect": "False",
+  "pickaxe": "False",
+  "tablet": "False",
+  "trident": "False",
+  "prism": "False",
+  "spherical stone": "False"
+}

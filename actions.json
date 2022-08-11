@@ -190,5 +190,7 @@
   "south": [],
   "east": [],
   "west": [],
+  "southeast": [],
+  "southwest": [],
   "quit": []
 }

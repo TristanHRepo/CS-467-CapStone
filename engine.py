@@ -26,11 +26,21 @@ class Engine:
         self.planet = None
         self.game = None
         self.descs = self.get_descriptions()
+        self.commons = {
+            "help": self.help,
+            "inventory": self.inventory,
+            "savegame": self.savegame,
+            "loadgame": self.loadgame,
+            "look": self.look
+        }
 
         flag = self.prompts()
         if flag == 1:
             self.game = self.load()
-            self.engine()
+            if self.game is not False:
+                self.engine()
+            else:
+                self.close()
         elif flag == 0:
             self.game = self.new_game()
             if self.game is not False:
@@ -166,6 +176,45 @@ class Engine:
             descs = json.load(file)
         return descs
 
+    def help(self):
+        """Helper function for a help call"""
+
+        nlp.get_actions()
+
+        return
+
+    def inventory(self):
+        """Helper function for an inventory call"""
+
+        print(inventory.get_inv())
+
+        return
+
+    def savegame(self):
+        """Helper function for a savegame call"""
+
+        self.save_game()
+
+        return
+
+    def loadgame(self):
+        """Helper function for a loadgame call"""
+
+        load_game = input("Would you like to load a game? (Y/N)\n>>")
+        if load_game == 'y' or load_game == 'Y':
+            self.load()
+
+        return
+
+    def look(self):
+        """Helper function for a look call"""
+
+        # Access current planet
+        pos = self.planets.index(type(self.planet).__name__)
+        print(self.descs[str(pos)])
+
+        return
+
     def engine(self):
         """Game play loop for the game"""
         manually_closed = False
@@ -173,33 +222,19 @@ class Engine:
 
             action = input(">>")
 
-            if action == 'help':
-                nlp.get_actions()
-                continue
-
             if action == 'quit':
                 self.close()
                 manually_closed = True
                 break
 
-            if action == 'inventory':
-                print(inventory.get_inv())
-                continue
-
-            if action == 'savegame':
-                self.save_game()
-                continue
-
-            if action == 'loadgame':
-                load_game = input("Would you like to load a game? (Y/N)\n>>")
-                if load_game == 'y' or load_game == 'Y':
-                    self.load()
+            if 'look at' in action:
+                flag = inventory.check_inv(action)
+                if flag is True:
                     continue
 
-            if action == 'look':
-                # Access current planet
-                pos = self.planets.index(type(self.planet).__name__)
-                print(self.descs[str(pos)])
+            if action in self.commons:
+                self.commons[action]()
+                continue
 
             room_status = self.planet.action(action)
 
