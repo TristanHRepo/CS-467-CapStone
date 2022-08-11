@@ -25,6 +25,7 @@ class Engine:
                         'Desertum', 'Asterone']
         self.planet = None
         self.game = None
+        self.descs = self.get_descriptions()
 
         flag = self.prompts()
         if flag == 1:
@@ -158,6 +159,13 @@ class Engine:
 
         return
 
+    def get_descriptions(self):
+        """ Retrieve long descriptions for each planet """
+        # Read from json file
+        with open("descriptions.json", "r") as file:
+            descs = json.load(file)
+        return descs
+
     def engine(self):
         """Game play loop for the game"""
         manually_closed = False
@@ -188,11 +196,15 @@ class Engine:
                     self.load()
                     continue
 
+            if action == 'look':
+                # Access current planet
+                pos = self.planets.index(type(self.planet).__name__)
+                print(self.descs[str(pos)])
+
             room_status = self.planet.action(action)
 
             if room_status is True:
                 self.change_planet()
-
 
         if not manually_closed:
             self.close()

@@ -54,7 +54,11 @@ class Atlas(planet.Planet):
             #     return False
 
         else:
-            self.data[obj[1]](obj[0])
+            try:
+                self.data[obj[1]](obj[0])
+            except:
+                print("Invalid action; please try again.")
+                return False
 
         # Final Action:
         return True
