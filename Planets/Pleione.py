@@ -12,18 +12,18 @@ class Pleione(planet.Planet):
         self.visited = False
         self.print_welcome()
         self.data = {
-            "jagged red peak": self.peak,
-            "peak": self.peak,
-            "red peak": self.peak,
-            "white sigil": self.sigil,
-            "sigil": self.sigil,
-            "red crystal": self.crystal,
-            "crystal": self.crystal,
-            "silver key": self.key,
-            "key": self.key
+            "golden flower": self.flower,
+            "flower": self.flower,
+            "grey patch": self.patch,
+            "dull grey patch": self.patch,
+            "patch": self.patch,
+            "flowers": self.flowers,
+            "crystal shard": self.shard,
+            "shard": self.shard,
+            "sparkle": self.sparkle
         }
-        self.crystal_obtained = False
-        self.rooms = [0, 1]
+        self.cured = False
+        self.rooms = [0, 1, 2, 3]
         self.placement = 0
 
     def query_NLP(self, text):
@@ -46,9 +46,9 @@ class Pleione(planet.Planet):
         else:
             self.data[obj[1]](obj[0])
 
-
         # Final Action:
-        return True
+
+        return False
 
         # DEFAULT:
         # return False
@@ -59,109 +59,138 @@ class Pleione(planet.Planet):
         Otherwise prints the room's short description.
         """
         if not self.visited:
-            print("You fly down onto the blue planet covered in swirling mists. As your ship descends, "
-                  "it is difficult to see due to the density of the mysterious fog, but you start to make out "
-                  "crystalline structures all over the surface of the planet. The majority of them are blue, "
-                  "but there are tones of white and purple as well, as though the planet itself is the inside of a "
-                  "geode. You land on a flat, smooth blue area that is elevated out of the mist, and look around. The "
-                  "ground is nearly entirely solid crystal, which rises and falls into hills and valleys. \n\nTo the "
-                  "south of your landing point, you notice a jagged red peak rising through the fog. It does not appear"
-                  " to be too steep to climb. In the sky to the west, you notice a golden planet looming close by, "
-                  "easily within a short flying distance. ")
+            print("Your ship lands on a yellow-hued planet. As you exit your ship, you see that the surface of the "
+                  "planet is virtually covered in golden flowers, bobbing gently in the apparent breeze. Each flower "
+                  "has four petals and a round, ruffled shape. The field of flowers nearly reaches your knees. The "
+                  "ground is thickly coated with flowers, but they easily yield to your touch, should you wish to "
+                  "push them aside. \n\nTo the north, you can make out a dull grey patch on the surface. The ground "
+                  "seems patchy, as though the flowers are not so dense there. Towards the east, you can see a blue "
+                  "planet looming close in the sky. Its surface seems to be swirling with mist. ")
             self.visited = True
         else:
-            print("You are on a blue, mist-covered planet that is covered in crystal. You are standing on a smooth, "
-                  "flat area. There is a jagged red peak to the south. There is a golden planet in the sky to the "
-                  "west. ")
+            if self.cured:
+                print("You land on a planet lush with golden flowers.\n"
+                      "All the flowers are uniformly healthy.\n"
+                      "There is a blue planet in the near east. ")
+            else:
+                print("You land on a planet lush with golden flowers. \n"
+                      "There is a dull grey patch to the north. \n"
+                      "There is a blue planet in the near east. ")
 
-    def peak(self, action):
-        """Interaction with peak"""
+    def flowers(self, action):
+        """Interaction with flowers"""
 
         if self.placement != 0:
             print("Invalid action")
             return
 
         act = action.lower()
-        if act == 'south' or act == 'go south' or act == 'jagged red peak' or act == 'go jagged red peak':
-            print("You make your way towards the jagged red peak rising over the mist to the south. You have to descend"
-                  " down into the mist to reach it. As you walk, you notice the ground below the surface of the mist is"
-                  " much more rugged, not smooth and flat like the area where your ship landed. It's easy to lose your "
-                  "footing, so you walk very slowly and carefully.\n\n"
-                  "When you get to the peak, you find that there is a seemingly natural path built into it, spiraling "
-                  "up to the top. You sense heat pulsing from inside the red crystalline structure.")
-
-        elif act == 'examine':
-            print("A jagged red peak that rises over the mist covering the planet. It seems to be made of red crystal.")
-
-        elif act == 'climb' or act == 'follow':
-            print("You climb the winding path out of the mist with relative ease, though you have to proceed with "
-                  "caution. As you reach the top of the peak, you notice that suspended in the air at eye level is a "
-                  "small, glittering, round red crystal.")
+        if act == 'push':
+            print("You part the flowers where you stand. Beneath the petals, you find a small, round, glittering red "
+                  "crystal. You sense that it is warm to the touch.")
+            if inventory.check("red crystal"):
+                print("It looks identical in makeup to the red crystals you saw on Atlas. The only difference is that "
+                      "this one is even smaller, a tiny crystal shard.\n"
+                      "Together with the whole crystal you picked up earlier, you could produce a significant amount of"
+                      " heat. ")
             self.placement += 1
 
-    def crystal(self, action):
-        """ Interaction with crystal """
+        elif act == 'examine':
+            print("A dense field of golden flowers that have a magical quality to them. Nearly the whole planet is "
+                  "covered in these flowers, such that it's hard to see the ground beneath.")
+
+    def shard(self, action):
+        """ Interaction with crystal shard """
         if self.placement != 1:
             print("You cannot do that now!")
             return
 
         act = action.lower()
         if act == 'touch':
-            print("You press a gloved finger to the crystal. You can sense great heat emanating from it.")
+            print("You gingerly touch the crystal shard on the ground. It's tiny, but you can sense great heat "
+                  "emanating from it.")
 
         elif act == 'examine':
-            print("The crystal floating in front of you is small and round, with a crimson hue. It glitters in the "
-                  "faint starlight. ")
+            print("The crystal shard on the ground is tiny, with jagged edges and a slight sparkle. It glitters in the "
+                  "faint starlight. It has a faint heat coming from it. Haven't you seen something like this somewhere "
+                  "before?")
 
         elif act == 'take':
-            print("You grab the crystal and add it to your inventory. On the ground to below, to the east, you notice "
-                  "a white sigil in the shame of a flame begin to glow.")
-            inventory.add("red crystal")  # Add to inventory file
-            self.crystal_obtained = True
+            print("You grab the tiny crystal and add it to your inventory. ")
+            inventory.add("crystal shard")
 
-        elif act == 'go':
-            self.placement += 1
-
-    def sigil(self, action):
-        """Interaction with sigil"""
+    def patch(self, action):
+        """Interaction with grey patch"""
 
         if self.placement != 1:
             print("Invalid action; please try again")
             return
 
         act = action.lower()
-        if act == 'examine':
-            print("You examine the white sigil. It appears to be a natural feature of the ground beneath your feet, "
-                  "rather than something that has been painted there. It makes a pointed shape that appears to "
-                  "resemble a flame. In the center, there is a raised circle marking. ")
-        # Action varies based on whether crystal is in inventory
-        elif act == 'touch':
-            # Check if the crystal is in inventory before interaction
-            if inventory.check("red crystal"):
-                print("You reach out and touch the sigil. The glow brightens and a silver, gem-encrusted key rises from"
-                      " the circle marking in the center, floating there. ")
-            else:
-                print("There is no response from the sigil. There is no abnormal sensation.")
+        if act == 'go':
+            print("You make your way northward, and find that the flower petals here have turned grey. The flowers "
+                  "appear to be wilting and dying, and as a result it is easier to see the earth beneath. You sense "
+                  "that the temperature in this area has sharply dropped. On the surface, you can see a sparkle. ")
+
+        elif act == 'examine':
+            print("A patch of land on the planet Pleione where all of the flowers covering the surface have turned "
+                  "dull, grey, and lifeless. They wilt in death. You think you can detect a hint of frost on their "
+                  "petals.\n"
+                  "Because the flowers are not so thick here, you can see the earth beneath. Your eyes catch on a "
+                  "sparkle on the surface. ")
+            self.placement += 1
 
         elif act == 'talk':
-            print("The sigil is silent.")
+            print("The dull grey patch doesn't respond to you. ")
 
         elif act == 'taste':
-            print("What are you doing? The sigil is not edible.")
+            print("You really shouldn't eat these dead flowers. You don't know what's happened to them! ")
 
-    def key(self, action):
-        """ Interaction with key """
-        if self.placement != 0:
-            print("You can't do that here. ")
+        elif act == 'touch':
+            print("You reach out and grab one of the flowers. Its wilted petals crumble to dust between your fingers. ")
+
+    def sparkle(self, action):
+        """ Interaction with sparkle """
+        if self.placement != 2:
+            print("You're not in the right place for that. ")
             return
 
         act = action.lower()
         if act == 'take':
-            inventory.add("silver key")
-            print("You pick up the key and add it to your inventory.")
+            print("Try as you might, you cannot pick up the sparkle. What is it, anyway? You should get a "
+                  "closer look. ")
 
         elif act == 'examine':
-            print("The key is silver and encrusted with gems. It is of standard size and shape otherwise.")
+            print("On closer examination, the sparkle appears to be a crystalline receptacle. There is an indentation "
+                  "in the middle of the receptacle. It seems like something small and round would perfectly fit into "
+                  "the indentation. A shard is too small, but maybe a whole crystal will do... ")
 
-        elif act == 'touch':
-            print("You touch the key. It continues to float there.")
+    def crystal(self, action):
+        """ Interaction with crystal in inventory """
+        act = action.lower()
+        if act == 'drop' or act == 'use':
+            if self.placement == 2:
+                print("You fit the small red crystal into the indentation. It's a perfect fit! \nAs the red crystal is "
+                      "placed into the receptacle, it sparkles, and the surrounding flowers seem to glow as they are "
+                      "flooded with life.\nYou sense that the temperature has risen. The flowers have been restored to "
+                      "their full colors.\nYou brought them back to life!")
+                self.cured = True
+                self.placement += 1
+            else:
+                print("You can't use that here. ")
+
+        elif act == "examine":
+            print("You have a small, round, red crystal in your inventory. You remember that you picked it up when "
+                  "you found it floating on Atlas. It has a faint shimmer to it, and you can sense that it gives off "
+                  "considerable heat.\n"
+                  "It seems that this crystal is attuned to fire magic.")
+
+    def flower(self, action):
+        """ Interaction with individual flower """
+        act = action.lower()
+        if act == 'take' or act == 'pull':
+            print("You pick a golden flower from the surface, and add it to your inventory. ")
+            inventory.add("golden flower")
+
+        elif act == 'examine':
+            print("A pretty golden flower that has a magical property to it. It glows with life. ")
