@@ -37,7 +37,10 @@ class Engine:
         flag = self.prompts()
         if flag == 1:
             self.game = self.load()
-            self.engine()
+            if self.game is not False:
+                self.engine()
+            else:
+                self.close()
         elif flag == 0:
             self.game = self.new_game()
             if self.game is not False:
