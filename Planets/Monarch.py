@@ -1,5 +1,6 @@
 import planet
 import nlp
+import inventory
 
 class Monarch(planet.Planet):
     
@@ -178,6 +179,7 @@ class Monarch(planet.Planet):
             print("You've managed to gently grab the bee-like insect, though that sting in your hand in unpleasant. "
                   "And you're actually feeling better now, rather than worse. A rather unexpected outcome. This is "
                   "worth keeping.")
-            self.accomplished = True        
+            self.accomplished = True  
+            inventory.add("insect")      
 
         return
