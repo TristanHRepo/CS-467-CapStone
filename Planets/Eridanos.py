@@ -163,6 +163,7 @@ class Eridanos(planet.Planet):
             print("After putting the pickaxe into the opening, a fossilized claw comes out. This is something "
                 "worth noting and keeping.")
             self.accomplished = True
+            inventory.add("fossilized claw")
         elif action.lower() == 'poke' and self.tool is False:
             print("It looks like you need to put something into the hole. You do see some moisture around it, "
                 "as well as some silver flecks.")  
@@ -182,5 +183,4 @@ class Eridanos(planet.Planet):
             self.placement -= 2
 
         return
-    
-   
+ 
