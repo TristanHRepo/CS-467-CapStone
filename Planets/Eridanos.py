@@ -1,21 +1,21 @@
 import planet
-
+import nlp
+import inventory
 
 class Eridanos(planet.Planet):
     
     def __init__(self):
         """Call inheritance from parent class"""
 
-        super().__init__("Eridanos")
-        self.print_welcome()
+        super().__init__("Eridanos")        
         self.data = {
-            "ravine path": self.ravine_path,
-            "river path1": self.river_path1,            
-            "sulphur river": self.sulphur_river,
-            "river path4": self.river_path2,
+            "ravine": self.ravine_path,
+            "wide path": self.river_path1,            
+            "river": self.sulphur_river,
+            "narrow path": self.river_path2,
             "termite mound": self.termite_mound,
-            "termite left cave": self.termite_left_cave,
-            "termite right cave": self.termite_right_cave,
+            "flat cave": self.termite_left_cave,
+            "short cave": self.termite_right_cave,
             
         }
         self.rooms = [0, 1, 2, 3, 4, 5, 6]
@@ -23,34 +23,41 @@ class Eridanos(planet.Planet):
         self.accomplished = False
         self.tool = False
         self.visited = False
+        self.print_welcome()
 
-    def query_NLP(self, text):
-        """Placeholder function to query natural language parser."""
+    """def query_NLP(self, text):
+        ""Placeholder function to query natural language parser.""
 
         # value = self.validate_user_command(text)
 
         action = text.rsplit()
 
-        return action
+        return action"""
 
     def action(self, text):
         """Processes an action from the user"""
 
-        object = self.query_NLP(text)
-        if object is False:
+        object = self.validate_user_command(text)
+        if object[0] is None or object[1] is None:
             print("Invalid action")
+            return False
 
         self.data[object[1]](object[0])
 
-        return
+        # Final actions completed, return True to let engine know to move to next planet
+        if self.accomplished == True:
+            return True
 
-    def enter_planet(self):
+        # Final action not complete, so return False
+        return False
+
+    def print_welcome(self):
         
         if self.visited == False:
             print('Plunging cliffs, strange flora, roaring rapids, and the faint smell of sulphur. Welcome to '
-                  'Eridanos./n You have arrived on the top of a medium sized cliffside, but in the distance you can '
-                  'see something that reminds you of a/n collosal termite mound. You start down a trail leading down '
-                  'into ravine that looks like it will take you to the mound, and there appear/n to be several caves '
+                  'Eridanos. You have arrived on the top of a medium sized cliffside, but in the distance you can '
+                  'see something that reminds you of a collosal termite mound. You start down a trail leading down '
+                  'into ravine that looks like it will take you to the mound, and there appear to be several caves '
                   'along the path.')
             self.visited = True
         elif self.visited == True:
@@ -65,8 +72,8 @@ class Eridanos(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'walk':
-            print("You walk down the ravine to the river path.")
+        if action.lower() == 'move':
+            print("You walk down the ravine to the wide river path. There's a spot you could explore that goes right to the river.")
             self.placement += 1
 
         return
@@ -81,6 +88,9 @@ class Eridanos(planet.Planet):
         if action.lower() == 'explore':
             print("You go over to the river itself to see what you might be able to find.")
             self.placement += 1
+        elif action.lower() == 'move':
+            print("You continue on the path. You'd say the path is now a narrow path rather than wide.")
+            self.placement += 2
         elif action.lower() == 'return':
             print("You head back toward the ravine path to your ship.")
             self.placement -= 1
@@ -94,11 +104,11 @@ class Eridanos(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'grab':
-            print("You reach into the river and pull out a tool that looks somewhat like a silver pickaxe. Definitely "
-                  "keeping this.")
+        if action.lower() == 'take':
             self.tool = True
-        elif action.lower() == 'continue':
+            print("You reach into the river and pull out a tool that looks somewhat like a silver pickaxe. Definitely "
+                  "keeping this.")            
+        elif action.lower() == 'move':
             print("You have to get back to the river path to continue on.")
         elif action.lower() == 'return':
             print("You head back toward the river path.")
@@ -149,14 +159,13 @@ class Eridanos(planet.Planet):
             print("Invalid action")
             return
 
-        if action.lower() == 'interact':
-            if self.tool == False:
-                print("It looks like you need to put something into the hole. You do see some moisture around it, "
-                      "as well as some silver flecks.")
-            elif self.tool == True:
-                print("After putting the pickaxe into the opening, a fossilized claw comes out. THis is something "
-                      "worth noting and keeping.")
-                self.accomplished = True
+        if action.lower() == 'poke' and self.tool is True:
+            print("After putting the pickaxe into the opening, a fossilized claw comes out. This is something "
+                "worth noting and keeping.")
+            self.accomplished = True
+        elif action.lower() == 'poke' and self.tool is False:
+            print("It looks like you need to put something into the hole. You do see some moisture around it, "
+                "as well as some silver flecks.")  
         elif action.lower() == 'return':
             print("You head back toward the clearing with your ship.")
             self.placement -= 1
