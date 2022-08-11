@@ -161,7 +161,7 @@ class Maia(planet.Planet):
 
     def hermes(self, action):
         """responding to Maia with Hermes as an answer...this part needs adjusting"""
-        if action.lower() == 'say':
+        if action.lower() == 'talk':
             print("You are correct!  Hermes is the son of Maia!")
             print("The room begins to vibrate.  A very large 20-sided die appears.")
             self.placement += 1000
